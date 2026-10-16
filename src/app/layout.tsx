@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://roboticsdiu.club'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://diurobotics.vercel.app'),
   title: "DIU Robotics Club | Dhaka International University",
   description: "Official portal of DIU Robotics Club (DIURC) - Learn, Build & Innovate. Join competitive LFR, Robo Soccer, and embedded systems innovation.",
   keywords: [

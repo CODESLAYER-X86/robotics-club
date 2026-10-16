@@ -992,7 +992,7 @@ export function CertificateDesigner() {
     issueDate: 'June 15, 2026',
     issueDateLabel: 'Issue Date',
     certificateId: 'DIURC-2026-ROBOTICS-00125',
-    footer: 'Verification URL: https://roboticsdiu.club/?cert=DIURC-2026-ROBOTICS-00125',
+    footer: 'Verification URL: https://diurobotics.vercel.app/?cert=DIURC-2026-ROBOTICS-00125',
   };
 
   const selectedTextKey = selectedElement?.kind === 'text' ? selectedElement.key : null;

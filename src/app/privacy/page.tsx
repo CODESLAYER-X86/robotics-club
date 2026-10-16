@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-semibold text-white">1. Introduction</h2>
           <p>
             Dhaka International University Robotics Club (&ldquo;DIURC&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) operates the web platform at{' '}
-            <span className="text-blue-400 font-mono">roboticsdiu.club</span>. This Privacy Policy explains how we collect, use, and protect your information when you access our member portal, participate in hardware workshops, robot competitions, or verify event credentials.
+            <span className="text-blue-400 font-mono">diurobotics.vercel.app</span>. This Privacy Policy explains how we collect, use, and protect your information when you access our member portal, participate in hardware workshops, robot competitions, or verify event credentials.
           </p>
         </section>
 

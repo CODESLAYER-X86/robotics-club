@@ -153,7 +153,7 @@ export function StandaloneCertificateViewer({ cert }: { cert: CertificateData })
   const qrX = layout.qrCode ? (layout.qrCode.x || (width - 160)) : (width - 160);
   const qrY = layout.qrCode ? (layout.qrCode.y || (height - 150)) : (height - 150);
 
-  const host = typeof window !== 'undefined' ? window.location.host : 'roboticsdiu.club';
+  const host = typeof window !== 'undefined' ? window.location.host : 'diurobotics.vercel.app';
   const protocol = typeof window !== 'undefined' && window.location.hostname.includes('localhost') ? 'http' : 'https';
   const verifyUrl = `${protocol}://${host}/verify/${cert.certificateCode}`;
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=000000&bgcolor=ffffff&data=${encodeURIComponent(verifyUrl)}`;

@@ -145,7 +145,7 @@ export function CertificatePublicPage() {
   const idX = layout.certId ? (layout.certId.x || (width / 2)) : (width / 2);
   const idY = layout.certId ? (layout.certId.y || 480) : 480;
 
-  const host = typeof window !== 'undefined' ? window.location.host : 'roboticsdiu.club';
+  const host = typeof window !== 'undefined' ? window.location.host : 'diurobotics.vercel.app';
   const protocol = typeof window !== 'undefined' && window.location.hostname.includes('localhost') ? 'http' : 'https';
   const verifyUrl = `${protocol}://${host}/?cert=${cert?.certificateCode || ''}`;
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=ffffff&bgcolor=0a0a0a&data=${encodeURIComponent(verifyUrl)}`;
