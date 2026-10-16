@@ -42,17 +42,17 @@ export function LoginPage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-emerald-500/8 blur-[120px]" />
-        <div className="absolute bottom-1/3 right-1/4 h-72 w-72 rounded-full bg-cyan-500/6 blur-[100px]" />
+        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px]" />
+        <div className="absolute bottom-1/3 right-1/4 h-72 w-72 rounded-full bg-cyan-500/8 blur-[100px]" />
       </div>
 
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 w-full max-w-md">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border border-emerald-500/20">
-            <img src="/logo.png" alt="Cyber Security Club Logo" className="h-full w-full object-cover rounded-full" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border border-blue-500/30 shadow-[0_0_20px_rgba(37,99,235,0.25)]">
+            <img src="/logo.png" alt="DIU Robotics Club Logo" className="h-full w-full object-cover rounded-full" />
           </div>
           <h1 className="text-2xl font-bold text-white">Welcome Back</h1>
-          <p className="mt-1 text-sm text-gray-500">Sign in to Cyber Security Club Platform</p>
+          <p className="mt-1 text-sm text-gray-400 font-mono">Sign in to DIU Robotics Club Platform</p>
         </div>
 
         <Card className="border-white/10 bg-[#111]/80 backdrop-blur-xl">

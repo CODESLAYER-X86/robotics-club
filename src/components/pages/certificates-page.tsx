@@ -54,8 +54,8 @@ export function CertificatesPage() {
   };
 
   const handleLinkedInAddToProfile = (cert: Certificate) => {
-    const name = encodeURIComponent(cert.event?.title || 'Cyber Security Club Certification');
-    const orgName = encodeURIComponent('Cyber Security Club');
+    const name = encodeURIComponent(cert.event?.title || 'DIU Robotics Club Certification');
+    const orgName = encodeURIComponent('DIU Robotics Club');
     const date = cert.issuedAt ? new Date(cert.issuedAt) : new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -67,7 +67,7 @@ export function CertificatesPage() {
 
   const handleTwitterShare = (code: string, type: CertificateType) => {
     const url = `${window.location.origin}/verify/${code}`;
-    const text = `I earned a ${CERTIFICATE_TYPE_LABELS[type]} certificate from Cyber Security Club! 🛡️🔐`;
+    const text = `I earned a ${CERTIFICATE_TYPE_LABELS[type]} certificate from DIU Robotics Club! 🤖⚡`;
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'width=600,height=400');
   };
 

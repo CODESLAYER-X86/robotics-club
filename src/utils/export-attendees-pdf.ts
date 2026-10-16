@@ -101,11 +101,11 @@ export async function exportEventAttendeesPdf({ event }: ExportPdfOptions): Prom
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12.5);
     doc.setTextColor(255, 255, 255);
-    doc.text("CYBER SECURITY CLUB", marginLeft, 11);
+    doc.text("DIU ROBOTICS CLUB", marginLeft, 11);
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);
-    doc.setTextColor(167, 243, 208); // emerald-200
+    doc.setTextColor(186, 230, 253); // sky-200
     doc.text("Official Event Attendee & Verification Roster", marginLeft, 17);
 
     // Event Info (Top Right)
@@ -161,7 +161,7 @@ export async function exportEventAttendeesPdf({ event }: ExportPdfOptions): Prom
     doc.setFont("helvetica", "normal");
     doc.setFontSize(7);
     doc.setTextColor(148, 163, 184); // slate-400
-    doc.text("Cyber Security Club — Confidential & Internal Club Use Only", marginLeft, pageHeight - 7);
+    doc.text("DIU Robotics Club — Confidential & Internal Club Use Only", marginLeft, pageHeight - 7);
 
     // Verifier signature space & Page count
     doc.text("Verifier: ____________________", pageWidth - marginRight - 55, pageHeight - 7);

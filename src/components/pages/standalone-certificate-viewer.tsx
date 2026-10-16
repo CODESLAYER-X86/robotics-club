@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { Shield, CheckCircle, XCircle, AlertTriangle, Linkedin, Twitter, Copy, Award, Download, Fingerprint, Loader2, Clock } from 'lucide-react';
+import { Shield, CheckCircle, XCircle, AlertTriangle, Linkedin, Twitter, Copy, Award, Download, Fingerprint, Loader2, Clock, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
@@ -153,7 +153,7 @@ export function StandaloneCertificateViewer({ cert }: { cert: CertificateData })
   const qrX = layout.qrCode ? (layout.qrCode.x || (width - 160)) : (width - 160);
   const qrY = layout.qrCode ? (layout.qrCode.y || (height - 150)) : (height - 150);
 
-  const host = typeof window !== 'undefined' ? window.location.host : 'cybersec.club';
+  const host = typeof window !== 'undefined' ? window.location.host : 'roboticsdiu.club';
   const protocol = typeof window !== 'undefined' && window.location.hostname.includes('localhost') ? 'http' : 'https';
   const verifyUrl = `${protocol}://${host}/verify/${cert.certificateCode}`;
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=000000&bgcolor=ffffff&data=${encodeURIComponent(verifyUrl)}`;
@@ -164,7 +164,7 @@ export function StandaloneCertificateViewer({ cert }: { cert: CertificateData })
       ({ x, y, fontSize: fs, color: c, text: t, fontWeight: fw, textAnchor: ta, letterSpacing: ls });
 
     return {
-      headerTitle: resolveEl('headerTitle', layout, isLandscape, width, d(width/2, isLandscape?210:230, 22, '#ffffff', 'CYBER SECURITY CLUB', 'bold', 'middle', 6)),
+      headerTitle: resolveEl('headerTitle', layout, isLandscape, width, d(width/2, isLandscape?210:230, 22, '#ffffff', 'DIU ROBOTICS CLUB', 'bold', 'middle', 6)),
       headerSubtitle: resolveEl('headerSubtitle', layout, isLandscape, width, d(width/2, isLandscape?235:255, 12, '#6b7280', 'VERIFIED DIGITAL CERTIFICATE', undefined, 'middle', 2)),
       intro: resolveEl('intro', layout, isLandscape, width, d(width/2, isLandscape?290:320, 16, '#9ca3af', 'This is to certify that')),
       recipientName: resolveEl('recipientName', layout, isLandscape, width, d(width/2, isLandscape?350:390, 42, '#10b981', displayName, 'bold')),
@@ -237,8 +237,8 @@ export function StandaloneCertificateViewer({ cert }: { cert: CertificateData })
   };
 
   const handleLinkedInAddToProfile = () => {
-    const name = encodeURIComponent(cert.event?.title || 'Cyber Security Club Certification');
-    const orgName = encodeURIComponent('Cyber Security Club');
+    const name = encodeURIComponent(cert.event?.title || 'DIU Robotics Club Certification');
+    const orgName = encodeURIComponent('DIU Robotics Club');
     const date = cert.issuedAt ? new Date(cert.issuedAt) : new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -249,7 +249,7 @@ export function StandaloneCertificateViewer({ cert }: { cert: CertificateData })
   };
 
   const handleTwitterShare = () => {
-    const text = `I earned a ${CERT_TYPE_LABELS[templateType]} certificate from Cyber Security Club!`;
+    const text = `I earned a ${CERT_TYPE_LABELS[templateType]} certificate from DIU Robotics Club! 🤖⚡`;
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(verifyUrl)}`,
       '_blank',
@@ -372,14 +372,14 @@ export function StandaloneCertificateViewer({ cert }: { cert: CertificateData })
     <div className="w-full max-w-4xl space-y-6">
       <div className="flex items-center justify-between">
         <a href="/" className="inline-flex items-center text-gray-400 hover:text-white text-sm font-medium gap-2">
-          <Shield className={`h-4 w-4 ${isRevoked ? 'text-rose-400' : 'text-emerald-400'}`} /> Cyber Security Club Home
+          <Bot className={`h-4 w-4 ${isRevoked ? 'text-rose-400' : 'text-blue-400'}`} /> DIU Robotics Club Home
         </a>
 
         {isValid && (
           <Button
             onClick={downloadPDF}
             disabled={downloading}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white gap-2 text-xs"
+            className="bg-blue-600 hover:bg-blue-500 text-white gap-2 text-xs"
           >
             {downloading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />}
             {downloading ? 'Downloading...' : 'Download PDF'}
@@ -440,7 +440,7 @@ export function StandaloneCertificateViewer({ cert }: { cert: CertificateData })
         <div className={`relative rounded-xl p-[2px] shadow-2xl ${
         isRevoked
           ? 'bg-gradient-to-r from-rose-500/60 via-red-600/50 to-rose-500/60'
-          : 'bg-gradient-to-r from-emerald-500/50 via-cyan-500/50 to-emerald-500/50'
+          : 'bg-gradient-to-r from-blue-600/50 via-cyan-500/50 to-blue-600/50'
       }`}>
         <div className="rounded-[10px] bg-[#000000] overflow-hidden">
           <div className="w-full relative" style={{ aspectRatio: `${width}/${height}` }}>

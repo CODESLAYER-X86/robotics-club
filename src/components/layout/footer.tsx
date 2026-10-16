@@ -16,8 +16,8 @@ const quickLinks: { label: string; view: AppView }[] = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/cscdiucse' },
-  { icon: Mail, label: 'Email', href: 'mailto:cscdiucse@gmail.com' },
+  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/diuroboticsclub' },
+  { icon: Mail, label: 'Email', href: 'mailto:robotics@diu.ac.bd' },
   { icon: Github, label: 'GitHub', href: 'https://github.com' },
 ];
 
@@ -56,15 +56,15 @@ export function Footer() {
           {/* Column 1: Brand */}
           <motion.div variants={itemVariants as any} className="space-y-4 max-w-sm">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full overflow-hidden border border-emerald-500/20">
-                <img src="/logo.png" alt="Cyber Security Club Logo" className="h-full w-full object-cover rounded-full" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-full overflow-hidden border border-blue-500/30">
+                <img src="/logo.png" alt="DIU Robotics Club Logo" className="h-full w-full object-cover rounded-full" />
               </div>
               <span className="text-lg font-bold text-white">
-                Cyber Security <span className="text-emerald-400">Club</span>
+                DIU Robotics <span className="text-blue-400">Club</span>
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-gray-500">
-              Defending the Digital Frontier
+            <p className="text-sm leading-relaxed text-gray-400 font-mono">
+              Learn, Build & Innovate
             </p>
             <div className="flex items-center gap-3 pt-1">
               {socialLinks.map((social) => (
@@ -74,7 +74,7 @@ export function Footer() {
                   aria-label={social.label}
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/5 bg-white/[0.02] text-gray-500 transition-colors hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-emerald-400"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/5 bg-white/[0.02] text-gray-500 transition-colors hover:border-blue-500/30 hover:bg-blue-500/10 hover:text-blue-400"
                 >
                   <social.icon className="h-4 w-4" />
                 </motion.a>
@@ -109,16 +109,16 @@ export function Footer() {
         className="border-t border-white/5"
       >
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 sm:flex-row sm:px-6 lg:px-8">
-          <p className="text-xs text-gray-600">
-            &copy; 2025 Cyber Security Club. All rights reserved.
+          <p className="text-xs text-gray-500">
+            &copy; 2026 DIU Robotics Club. All rights reserved.
           </p>
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-gray-500">
             Created By{' '}
             <a
               href="https://www.linkedin.com/in/codeslayer-x86/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-emerald-400 hover:text-emerald-300 transition-colors"
+              className="font-mono text-blue-400 hover:text-blue-300 transition-colors"
             >
               CODESLAYER_X86
             </a>

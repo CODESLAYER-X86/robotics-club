@@ -38,7 +38,7 @@ export function RegisterPage() {
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-12">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute right-1/4 top-1/3 h-96 w-96 rounded-full bg-emerald-500/6 blur-[120px]" />
+        <div className="absolute right-1/4 top-1/3 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px]" />
       </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -46,11 +46,11 @@ export function RegisterPage() {
         className="relative z-10 w-full max-w-lg"
       >
         <div className="mb-6 text-center">
-          <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/10">
-            <UserPlus className="h-7 w-7 text-emerald-400" />
+          <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/30 bg-blue-500/10 shadow-[0_0_20px_rgba(37,99,235,0.2)]">
+            <UserPlus className="h-7 w-7 text-blue-400" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Join Cyber Security Club</h1>
-          <p className="mt-1 text-sm text-gray-500">Start your cybersecurity journey with us</p>
+          <h1 className="text-2xl font-bold text-white">Join DIU Robotics Club</h1>
+          <p className="mt-1 text-sm text-gray-400 font-mono">Start your autonomous robotics and maker journey with us</p>
         </div>
 
         <Card className="border-white/10 bg-[#111]/80 backdrop-blur-xl">

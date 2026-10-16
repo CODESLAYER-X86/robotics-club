@@ -79,10 +79,10 @@ function getRoleColors(role?: string): RoleColors {
       };
     case 'treasurer':
       return {
-        avatarBg: 'from-emerald-500 to-green-500',
-        accentClass: 'text-emerald-400',
-        borderAccent: 'border-emerald-500/30',
-        glowClass: 'shadow-emerald-500/10 hover:shadow-emerald-500/20',
+        avatarBg: 'from-blue-600 to-cyan-600',
+        accentClass: 'text-blue-400',
+        borderAccent: 'border-blue-500/30',
+        glowClass: 'shadow-blue-500/10 hover:shadow-blue-500/20',
       };
     case 'media':
       return {
@@ -233,7 +233,7 @@ export function CommitteeMemberCard({
                   <a
                     href={`mailto:${member.email}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"
+                    className="flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-gray-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"
                   >
                     <Mail className="h-3.5 w-3.5" />
                   </a>
@@ -243,14 +243,14 @@ export function CommitteeMemberCard({
           </div>
 
           {/* Bottom Flip Action area */}
-          <div className="flex-1 flex items-center bg-[#161c18] border-t border-white/5">
+          <div className="flex-1 flex items-center bg-[#0d1522] border-t border-white/5">
             <button
               type="button"
               onClick={toggleFlip}
               className="flex w-full h-full items-center justify-between px-5 py-3.5 text-xs font-semibold text-gray-400 hover:text-white hover:bg-white/[0.02] transition-colors"
             >
               <span>About {(member.name || 'Member').trim().split(/\s+/)[0]}</span>
-              <ArrowRight className="h-4 w-4 text-emerald-500" />
+              <ArrowRight className="h-4 w-4 text-blue-400" />
             </button>
           </div>
         </div>
@@ -314,7 +314,7 @@ export function CommitteeMemberCard({
                       variant="ghost"
                       size="icon"
                       title="Edit member details"
-                      className="h-8 w-8 text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/10"
+                      className="h-8 w-8 text-gray-400 hover:text-blue-400 hover:bg-blue-500/10"
                       onClick={(e) => {
                         e.stopPropagation();
                         onEdit(member);
@@ -353,7 +353,7 @@ export function CommitteeMemberCard({
             onClick={toggleFlip}
             className="mt-4 flex items-center justify-center gap-1.5 w-full rounded-lg border border-white/5 bg-white/[0.02] px-4 py-2.5 text-xs font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] hover:border-white/10 transition-all duration-200"
           >
-            <ArrowLeft className="h-3.5 w-3.5 text-emerald-500" />
+            <ArrowLeft className="h-3.5 w-3.5 text-blue-400" />
             <span>Back to Profile</span>
           </button>
         </div>

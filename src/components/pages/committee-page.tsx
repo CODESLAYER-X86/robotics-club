@@ -814,9 +814,9 @@ function CommitteePageContent() {
           <div className="flex items-center gap-2 mb-2">
             <Badge
               variant="outline"
-              className="border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-mono text-xs"
+              className="border-blue-500/40 bg-blue-500/10 text-blue-300 font-mono text-xs"
             >
-              <Users className="mr-1.5 h-3.5 w-3.5 text-emerald-400" />
+              <Users className="mr-1.5 h-3.5 w-3.5 text-blue-400" />
               DHAKA INTERNATIONAL UNIVERSITY
             </Badge>
           </div>
@@ -824,7 +824,7 @@ function CommitteePageContent() {
             ADVISORY & COMMITTEE MEMBERS
           </h1>
           <p className="text-sm text-gray-400 mt-1 max-w-2xl font-sans">
-            The faculty mentors, advisors, and executive student board steering Dhaka International University Cyber Security Club.
+            The faculty mentors, advisors, and executive student board steering Dhaka International University Robotics Club.
           </p>
         </div>
 
@@ -842,7 +842,7 @@ function CommitteePageContent() {
             <Button
               onClick={() => openAddDialog('COMMITTEE')}
               size="sm"
-              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold font-mono text-xs shadow-lg shadow-emerald-500/20"
+              className="bg-blue-600 hover:bg-blue-500 text-white font-bold font-mono text-xs shadow-lg shadow-blue-500/20"
             >
               <Plus className="mr-1.5 h-3.5 w-3.5" />
               Add Committee
@@ -865,7 +865,7 @@ function CommitteePageContent() {
               ADVISORY MEMBERS
             </h2>
             <p className="text-xs text-gray-400 mt-0.5 font-sans">
-              Honorable faculty mentors and industry advisors guiding our cybersecurity mission and research.
+              Honorable faculty mentors and industry advisors guiding our robotics innovation mission and research.
             </p>
           </div>
 
@@ -948,21 +948,21 @@ function CommitteePageContent() {
           <div className="w-full border-t border-white/10" />
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-[#060b08] px-4 text-[11px] font-mono tracking-widest text-emerald-400 uppercase flex items-center gap-2">
-            <Sparkles className="h-3 w-3 text-emerald-400" />
+          <span className="bg-[#040810] px-4 text-[11px] font-mono tracking-widest text-blue-400 uppercase flex items-center gap-2">
+            <Sparkles className="h-3 w-3 text-cyan-400" />
             EXECUTIVE OPERATIONAL BOARD
-            <Sparkles className="h-3 w-3 text-emerald-400" />
+            <Sparkles className="h-3 w-3 text-cyan-400" />
           </span>
         </div>
       </div>
 
       {/* ── SECTION 2: COMMITTEE MEMBERS ── */}
       <section className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-emerald-500/20 pb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-blue-500/20 pb-3">
           <div>
             <div className="flex items-center gap-2">
-              <Badge variant="outline" className="border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-mono text-xs">
-                <Users className="mr-1.5 h-3.5 w-3.5 text-emerald-400" />
+              <Badge variant="outline" className="border-blue-500/40 bg-blue-500/10 text-blue-300 font-mono text-xs">
+                <Users className="mr-1.5 h-3.5 w-3.5 text-blue-400" />
                 EXECUTIVE BOARD
               </Badge>
             </div>
@@ -979,7 +979,7 @@ function CommitteePageContent() {
               onClick={() => openAddDialog('COMMITTEE')}
               size="sm"
               variant="ghost"
-              className="text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 font-mono text-xs self-start sm:self-auto"
+              className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 font-mono text-xs self-start sm:self-auto"
             >
               <Plus className="mr-1 h-3.5 w-3.5" />
               Add Committee Member
@@ -1070,7 +1070,7 @@ function CommitteePageContent() {
             <Button
               onClick={handleAddSubmit}
               disabled={formSubmitting || uploadingImage || !formData.name || !formData.role || !formData.description}
-              className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold font-mono text-xs"
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold font-mono text-xs"
             >
               {formSubmitting || uploadingImage ? (
                 <>
@@ -1108,7 +1108,7 @@ function CommitteePageContent() {
             <Button
               onClick={handleEditSubmit}
               disabled={formSubmitting || uploadingImage || !formData.name || !formData.role || !formData.description}
-              className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold font-mono text-xs"
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold font-mono text-xs"
             >
               {formSubmitting || uploadingImage ? (
                 <>

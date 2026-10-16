@@ -232,12 +232,17 @@ export function Header() {
             onClick={() => setCurrentView('landing')}
             className="flex items-center gap-3 shrink-0"
           >
-            <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full overflow-hidden border-2 border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.25)]">
-              <img src="/logo.png" alt="Cyber Security Club Logo" className="h-full w-full object-cover rounded-full" />
+            <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full overflow-hidden border-2 border-blue-500/40 shadow-[0_0_15px_rgba(29,78,216,0.3)]">
+              <img src="/logo.png" alt="DIU Robotics Club Logo" className="h-full w-full object-cover rounded-full" />
             </div>
-            <span className="hidden text-base font-bold text-white sm:block">
-              Cyber Security <span className="text-emerald-400">Club</span>
-            </span>
+            <div className="hidden sm:flex flex-col text-left">
+              <span className="text-sm font-black tracking-wider text-white">
+                DIU ROBOTICS <span className="text-blue-400">CLUB</span>
+              </span>
+              <span className="text-[10px] font-mono text-cyan-400 tracking-wider">
+                Learn, Build & Innovate
+              </span>
+            </div>
           </button>
 
           {/* Desktop Navigation (Visible on xl screens where all 8 items fit comfortably) */}
@@ -251,14 +256,14 @@ export function Header() {
                   className={cn(
                     'relative px-2.5 2xl:px-3 py-1.5 rounded-lg text-xs 2xl:text-sm font-medium transition-all duration-200',
                     isActive
-                      ? 'text-emerald-400 bg-emerald-500/10'
+                      ? 'text-blue-400 bg-blue-500/10'
                       : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
                   )}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="header-active-nav"
-                      className="absolute inset-0 rounded-lg bg-emerald-500/10 border border-emerald-500/20"
+                      className="absolute inset-0 rounded-lg bg-blue-500/10 border border-blue-500/30"
                       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                     />
                   )}
@@ -283,7 +288,7 @@ export function Header() {
                       {index < breadcrumbs.length - 1 && crumb.parent ? (
                         <BreadcrumbLink
                           asChild
-                          className="cursor-pointer text-gray-500 hover:text-emerald-400"
+                          className="cursor-pointer text-gray-500 hover:text-blue-400"
                           onClick={() => setCurrentView(crumb.parent as AppView)}
                         >
                           <span>{crumb.label}</span>
@@ -310,7 +315,7 @@ export function Header() {
       {/* Real-time Clock */}
       {currentTime && (
         <div className="hidden items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-1.5 2xl:flex">
-          <Clock className="h-3.5 w-3.5 text-emerald-400" />
+          <Clock className="h-3.5 w-3.5 text-blue-400" />
           <span className="text-xs font-mono tabular-nums text-gray-400">{timeString}</span>
         </div>
       )}
@@ -340,7 +345,7 @@ export function Header() {
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[10px] font-bold text-white"
+              className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-bold text-white"
             >
               {unreadCount > 9 ? '9+' : unreadCount}
             </motion.span>
@@ -357,7 +362,7 @@ export function Header() {
                 repeat: Infinity,
                 ease: 'easeOut',
               }}
-              className="absolute -right-0.5 -top-0.5 h-4 w-4 rounded-full bg-emerald-500"
+              className="absolute -right-0.5 -top-0.5 h-4 w-4 rounded-full bg-blue-500"
             />
           )}
         </Button>
@@ -369,16 +374,16 @@ export function Header() {
           variant="outline"
           size="sm"
           onClick={() => setCurrentView(currentView === 'landing' ? 'dashboard' : 'landing')}
-          className="hidden md:inline-flex items-center gap-1.5 h-8 px-2.5 text-xs font-mono border-emerald-500/25 bg-emerald-500/5 text-emerald-300 hover:bg-emerald-500/15 shrink-0"
+          className="hidden md:inline-flex items-center gap-1.5 h-8 px-2.5 text-xs font-mono border-blue-500/30 bg-blue-500/10 text-blue-300 hover:bg-blue-500/20 shrink-0"
         >
           {currentView === 'landing' ? (
             <>
-              <LayoutDashboard className="h-3.5 w-3.5 text-emerald-400" />
+              <LayoutDashboard className="h-3.5 w-3.5 text-blue-400" />
               <span>Dashboard</span>
             </>
           ) : (
             <>
-              <Globe className="h-3.5 w-3.5 text-emerald-400" />
+              <Globe className="h-3.5 w-3.5 text-blue-400" />
               <span>Public Site</span>
             </>
           )}
@@ -391,18 +396,18 @@ export function Header() {
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-2 rounded-lg px-2 py-1.5 transition-colors hover:bg-white/5 shrink-0">
               <div className="relative">
-                <Avatar className="h-8 w-8 border border-emerald-500/30">
+                <Avatar className="h-8 w-8 border border-blue-500/30">
                   {currentUser.avatar && (
                     <AvatarImage src={getOptimizedAvatarUrl(currentUser.avatar)} alt={currentUser.name} className="object-cover" />
                   )}
-                  <AvatarFallback className="bg-emerald-500/20 text-xs font-semibold text-emerald-400">
+                  <AvatarFallback className="bg-blue-500/20 text-xs font-semibold text-blue-400">
                     {initials}
                   </AvatarFallback>
                 </Avatar>
                 {/* Online status indicator */}
                 <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3 items-center justify-center">
-                  <span className="absolute h-full w-full rounded-full bg-emerald-500 opacity-30 animate-ping" />
-                  <span className="relative h-2.5 w-2.5 rounded-full border-2 border-[#0a0a0a] bg-emerald-500" />
+                  <span className="absolute h-full w-full rounded-full bg-blue-500 opacity-30 animate-ping" />
+                  <span className="relative h-2.5 w-2.5 rounded-full border-2 border-[#0a0a0a] bg-blue-500" />
                 </span>
               </div>
               <span className="hidden text-sm font-medium text-gray-300 2xl:block">
@@ -418,7 +423,7 @@ export function Header() {
               <div className="flex flex-col space-y-1">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-medium text-white">{currentUser.name}</p>
-                  <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="flex h-2 w-2 rounded-full bg-blue-500" />
                 </div>
                 <p className="text-xs text-gray-500">{currentUser.email}</p>
               </div>
@@ -426,7 +431,7 @@ export function Header() {
             <DropdownMenuSeparator className="bg-white/5" />
             <DropdownMenuItem
               onClick={() => setCurrentView(currentView === 'landing' ? 'dashboard' : 'landing')}
-              className="cursor-pointer gap-2 text-emerald-400 focus:bg-emerald-500/10 focus:text-emerald-300"
+              className="cursor-pointer gap-2 text-blue-400 focus:bg-blue-500/10 focus:text-blue-300"
             >
               <Globe className="h-4 w-4" />
               {currentView === 'landing' ? 'Executive Dashboard' : 'View Public Website'}
@@ -436,14 +441,14 @@ export function Header() {
                 useAppStore.getState().setSelectedMemberId(null);
                 setCurrentView('profile');
               }}
-              className="cursor-pointer gap-2 text-gray-300 focus:bg-white/5 focus:text-emerald-400"
+              className="cursor-pointer gap-2 text-gray-300 focus:bg-white/5 focus:text-blue-400"
             >
               <User className="h-4 w-4" />
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => setCurrentView('settings')}
-              className="cursor-pointer gap-2 text-gray-300 focus:bg-white/5 focus:text-emerald-400"
+              className="cursor-pointer gap-2 text-gray-300 focus:bg-white/5 focus:text-blue-400"
             >
               <Settings className="h-4 w-4" />
               Settings
@@ -464,14 +469,14 @@ export function Header() {
             onClick={() => setCurrentView('register')}
             variant="outline"
             size="sm"
-            className="hidden sm:inline-flex border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-300 hover:border-emerald-500/30"
+            className="hidden sm:inline-flex border-blue-500/30 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 hover:border-blue-500/50"
           >
             Join Club
           </Button>
           <Button
             onClick={() => setCurrentView('login')}
             size="sm"
-            className="bg-emerald-600 text-white hover:bg-emerald-500 shadow-lg shadow-emerald-500/20"
+            className="bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/20"
           >
             Sign In
           </Button>
@@ -487,7 +492,7 @@ export function Header() {
           className="shrink-0 text-gray-400 hover:bg-white/5 hover:text-gray-200 xl:hidden ml-1"
           aria-label="Toggle navigation menu"
         >
-          {mobileNavOpen ? <X className="h-5 w-5 text-emerald-400" /> : <Menu className="h-5 w-5" />}
+          {mobileNavOpen ? <X className="h-5 w-5 text-blue-400" /> : <Menu className="h-5 w-5" />}
         </Button>
       )}
     </motion.header>
@@ -522,7 +527,7 @@ export function Header() {
                   className={cn(
                     'flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all',
                     isActive
-                      ? 'bg-emerald-500/10 text-emerald-400 border-l-2 border-emerald-400'
+                      ? 'bg-blue-500/10 text-blue-400 border-l-2 border-blue-400'
                       : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
                   )}
                 >
@@ -536,24 +541,24 @@ export function Header() {
               {isAuthenticated && currentUser ? (
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <Avatar className="h-8 w-8 border border-emerald-500/30 shrink-0">
+                    <Avatar className="h-8 w-8 border border-blue-500/30 shrink-0">
                       {currentUser.avatar && (
                         <AvatarImage src={getOptimizedAvatarUrl(currentUser.avatar)} alt={currentUser.name} className="object-cover" />
                       )}
-                      <AvatarFallback className="bg-emerald-500/20 text-xs font-semibold text-emerald-400">
+                      <AvatarFallback className="bg-blue-500/20 text-xs font-semibold text-blue-400">
                         {initials}
                       </AvatarFallback>
                     </Avatar>
                     <div className="min-w-0">
                       <div className="text-xs font-semibold text-white truncate">{currentUser.name}</div>
-                      <div className="text-[10px] text-emerald-400 font-mono">{currentUser.role}</div>
+                      <div className="text-[10px] text-blue-400 font-mono">{currentUser.role}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <Button
                       onClick={() => { setCurrentView('dashboard'); setMobileNavOpen(false); }}
                       size="sm"
-                      className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold font-mono text-xs"
+                      className="bg-blue-600 hover:bg-blue-500 text-white font-bold font-mono text-xs"
                     >
                       Dashboard
                     </Button>
@@ -572,13 +577,13 @@ export function Header() {
                   <Button
                     onClick={() => { setCurrentView('register'); setMobileNavOpen(false); }}
                     variant="outline"
-                    className="flex-1 border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/10"
+                    className="flex-1 border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
                   >
                     Join Club
                   </Button>
                   <Button
                     onClick={() => { setCurrentView('login'); setMobileNavOpen(false); }}
-                    className="flex-1 bg-emerald-600 text-white hover:bg-emerald-500"
+                    className="flex-1 bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/20"
                   >
                     Sign In
                   </Button>

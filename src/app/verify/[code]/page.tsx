@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     if (!certificate) {
       return {
-        title: 'Certificate Not Found | Cyber Security Club',
+        title: 'Certificate Not Found | DIU Robotics Club',
       };
     }
 
@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     if (isRevoked) {
       return {
-        title: `REVOKED Certificate - ${name} | Cyber Security Club`,
-        description: `This certificate issued to ${name} for "${event}" has been officially REVOKED by the Cyber Security Club.`,
+        title: `REVOKED Certificate - ${name} | DIU Robotics Club`,
+        description: `This certificate issued to ${name} for "${event}" has been officially REVOKED by DIU Robotics Club.`,
         openGraph: {
-          title: `REVOKED Certificate - ${name} | Cyber Security Club`,
+          title: `REVOKED Certificate - ${name} | DIU Robotics Club`,
           description: `This certificate has been revoked.`,
           images: [
             {
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
         twitter: {
           card: 'summary_large_image',
-          title: `REVOKED Certificate - ${name} | Cyber Security Club`,
+          title: `REVOKED Certificate - ${name} | DIU Robotics Club`,
           description: `This certificate has been revoked.`,
           images: [ogUrl],
         }
@@ -57,11 +57,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-      title: `Verified Certificate - ${name} | Cyber Security Club`,
-      description: `This certifies that ${name} successfully completed the event "${event}". Verify certificate authenticity online.`,
+      title: `Verified Certificate - ${name} | DIU Robotics Club`,
+      description: `This certifies that ${name} successfully completed the event "${event}". Verify certificate authenticity online with DIU Robotics Club.`,
       openGraph: {
-        title: `Verified Certificate - ${name} | Cyber Security Club`,
-        description: `This certifies that ${name} successfully completed the event "${event}". Verify certificate authenticity online.`,
+        title: `Verified Certificate - ${name} | DIU Robotics Club`,
+        description: `This certifies that ${name} successfully completed the event "${event}". Verify certificate authenticity online with DIU Robotics Club.`,
         images: [
           {
             url: ogUrl,
@@ -74,14 +74,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
       twitter: {
         card: 'summary_large_image',
-        title: `Verified Certificate - ${name} | Cyber Security Club`,
-        description: `This certifies that ${name} successfully completed the event "${event}". Verify certificate authenticity online.`,
+        title: `Verified Certificate - ${name} | DIU Robotics Club`,
+        description: `This certifies that ${name} successfully completed the event "${event}". Verify certificate authenticity online with DIU Robotics Club.`,
         images: [ogUrl],
       }
     };
   } catch {
     return {
-      title: 'Certificate Verification | Cyber Security Club',
+      title: 'Certificate Verification | DIU Robotics Club',
     };
   }
 }

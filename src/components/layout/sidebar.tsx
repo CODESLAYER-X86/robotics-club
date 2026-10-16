@@ -78,7 +78,7 @@ const NAV_DESCRIPTIONS: Record<string, string> = {
   Home: 'Return to the homepage',
   'Committee Member': 'Manage club committee members',
   Events: 'Browse and manage events',
-  About: 'Learn about Cyber Security Club',
+  About: 'Learn about DIU Robotics Club',
   'Apply for Membership': 'Apply for club membership',
   Dashboard: 'Overview and key metrics',
   Certificates: 'View your earned certificates',
@@ -343,7 +343,7 @@ export function Sidebar({ className }: SidebarProps = {}) {
           <motion.div
             animate={{ y: ['-100%', '100vh'] }}
             transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-            className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/[0.07] to-transparent"
+            className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/[0.12] to-transparent"
           />
         </div>
 
@@ -353,8 +353,8 @@ export function Sidebar({ className }: SidebarProps = {}) {
             onClick={() => setCurrentView('landing')}
             className="flex items-center gap-3 cursor-pointer hover:bg-white/[0.02] transition-colors duration-200 text-left flex-1 min-w-0 focus:outline-none"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full overflow-hidden border border-emerald-500/20">
-              <img src="/logo.png" alt="Cyber Security Club Logo" className="h-full w-full object-cover rounded-full" />
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full overflow-hidden border border-blue-500/30">
+              <img src="/logo.png" alt="DIU Robotics Club Logo" className="h-full w-full object-cover rounded-full" />
             </div>
             <AnimatePresence>
               {sidebarOpen && (
@@ -366,10 +366,10 @@ export function Sidebar({ className }: SidebarProps = {}) {
                   className="flex flex-col overflow-hidden"
                 >
                   <span className="text-sm font-bold tracking-wide text-white whitespace-nowrap">
-                    Cyber Security Club
+                    DIU Robotics Club
                   </span>
-                  <span className="text-[10px] tracking-widest text-emerald-400/70 uppercase whitespace-nowrap">
-                    Security Platform
+                  <span className="text-[10px] tracking-widest text-cyan-400/80 font-mono uppercase whitespace-nowrap">
+                    Robotics Platform
                   </span>
                 </motion.div>
               )}

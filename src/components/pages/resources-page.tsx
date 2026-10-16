@@ -353,10 +353,10 @@ export function ResourcesPage() {
             OFFICIAL KNOWLEDGE VAULT
           </Badge>
           <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl font-mono">
-            CYBERSECURITY LEARNING & RESOURCE HUB
+            ROBOTICS & EMBEDDED SYSTEMS RESOURCE HUB
           </h1>
           <p className="text-sm text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Curated roadmaps, free and premium hands-on practice platforms, essential field literature, and security tools curated for Dhaka International University members.
+            Curated roadmaps, free and premium hands-on practice platforms, essential field literature, and engineering tools curated for Dhaka International University members.
           </p>
 
           {/* Search Bar */}
@@ -411,7 +411,7 @@ export function ResourcesPage() {
                 <Compass className="h-5 w-5 text-emerald-400" />
                 <h2 className="text-2xl font-bold font-mono text-white">STRUCTURED LEARNING ROADMAPS</h2>
               </div>
-              <p className="text-xs text-gray-400">Step-by-step milestones to advance your cybersecurity competence.</p>
+              <p className="text-xs text-gray-400">Step-by-step milestones to advance your robotics & engineering competence.</p>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-2">
@@ -424,7 +424,7 @@ export function ResourcesPage() {
                         <Badge variant="outline" className={`font-mono text-[10px] ${roadmap.badgeColor}`}>
                           {roadmap.level}
                         </Badge>
-                        <span className="font-mono text-[11px] text-gray-500">DIU CSC ROADMAP</span>
+                        <span className="font-mono text-[11px] text-gray-500">DIURC ROADMAP</span>
                       </div>
                       <CardTitle className="font-mono text-lg text-white mt-2">{roadmap.title}</CardTitle>
                       <p className="text-xs text-gray-400 font-sans mt-1 leading-relaxed">{roadmap.description}</p>
@@ -561,9 +561,9 @@ export function ResourcesPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-emerald-400" />
-                <h2 className="text-2xl font-bold font-mono text-white">ESSENTIAL CYBERSECURITY LITERATURE</h2>
+                <h2 className="text-2xl font-bold font-mono text-white">ESSENTIAL ROBOTICS & TECHNICAL LITERATURE</h2>
               </div>
-              <p className="text-xs text-gray-400">Timeless textbooks, field handbooks, and operational guides recommended by senior researchers.</p>
+              <p className="text-xs text-gray-400">Timeless textbooks, field handbooks, and operational guides recommended by senior engineers.</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

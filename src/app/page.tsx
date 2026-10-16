@@ -30,23 +30,23 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
         const cleanDesc = (event.description || '')
           .replace(/[#*`_~]/g, '')
           .slice(0, 180)
-          .trim() || 'Join this event hosted by Cyber Security Club at Dhaka International University.';
+          .trim() || 'Join this event hosted by DIU Robotics Club at Dhaka International University.';
 
         const imageUrl = event.poster || '/logo.png';
         const absoluteImageUrl = imageUrl.startsWith('http')
           ? imageUrl
-          : `https://www.cybersecdiu.club${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
+          : `${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
 
-        const pageUrl = `https://www.cybersecdiu.club/?view=event-detail&id=${eventId}`;
+        const pageUrl = `/?view=event-detail&id=${eventId}`;
 
         return {
-          title: `${event.title} | Cyber Security Club`,
+          title: `${event.title} | DIU Robotics Club`,
           description: cleanDesc,
           openGraph: {
-            title: `${event.title} | Cyber Security Club`,
+            title: `${event.title} | DIU Robotics Club`,
             description: cleanDesc,
             url: pageUrl,
-            siteName: 'Cyber Security Club',
+            siteName: 'DIU Robotics Club',
             images: [
               {
                 url: absoluteImageUrl,
@@ -57,7 +57,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
           },
           twitter: {
             card: 'summary_large_image',
-            title: `${event.title} | Cyber Security Club`,
+            title: `${event.title} | DIU Robotics Club`,
             description: cleanDesc,
             images: [absoluteImageUrl],
           },
@@ -72,48 +72,48 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   const certCode = typeof params.cert === 'string' ? params.cert : undefined;
   if (certCode) {
     return {
-      title: 'Verified Certificate | Cyber Security Club',
-      description: 'View and verify a certificate issued by Cyber Security Club at Dhaka International University.',
+      title: 'Verified Certificate | DIU Robotics Club',
+      description: 'View and verify a certificate issued by DIU Robotics Club at Dhaka International University.',
       openGraph: {
-        title: 'Verified Certificate | Cyber Security Club',
-        description: 'View and verify a certificate issued by Cyber Security Club at Dhaka International University.',
-        url: `https://www.cybersecdiu.club/?cert=${certCode}`,
-        siteName: 'Cyber Security Club',
-        images: [{ url: 'https://www.cybersecdiu.club/logo.png', alt: 'Cyber Security Club' }],
+        title: 'Verified Certificate | DIU Robotics Club',
+        description: 'View and verify a certificate issued by DIU Robotics Club at Dhaka International University.',
+        url: `/?cert=${certCode}`,
+        siteName: 'DIU Robotics Club',
+        images: [{ url: '/logo.png', alt: 'DIU Robotics Club' }],
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Verified Certificate | Cyber Security Club',
-        description: 'View and verify a certificate issued by Cyber Security Club at Dhaka International University.',
-        images: ['https://www.cybersecdiu.club/logo.png'],
+        title: 'Verified Certificate | DIU Robotics Club',
+        description: 'View and verify a certificate issued by DIU Robotics Club at Dhaka International University.',
+        images: ['/logo.png'],
       },
     };
   }
 
   return {
-    title: 'Cyber Security Club - Dhaka International University',
-    description: 'Defend. Learn. Lead. Join our cybersecurity community at Dhaka International University and master the art of digital defense.',
+    title: 'DIU Robotics Club | Dhaka International University',
+    description: 'Official portal of DIU Robotics Club (DIURC) - Learn, Build & Innovate. Join competitive LFR, Robo Soccer, and embedded systems innovation.',
     openGraph: {
-      title: 'Cyber Security Club - Dhaka International University',
-      description: 'Defend. Learn. Lead. Join our cybersecurity community at Dhaka International University and master the art of digital defense.',
-      url: 'https://www.cybersecdiu.club',
-      siteName: 'Cyber Security Club',
+      title: 'DIU Robotics Club | Dhaka International University',
+      description: 'Official portal of DIU Robotics Club (DIURC) - Learn, Build & Innovate. Join competitive LFR, Robo Soccer, and embedded systems innovation.',
+      url: '/',
+      siteName: 'DIU Robotics Club',
       images: [
         {
-          url: 'https://www.cybersecdiu.club/logo.png',
+          url: '/logo.png',
           width: 800,
           height: 800,
-          alt: 'Cyber Security Club Logo',
+          alt: 'DIU Robotics Club Logo',
         },
       ],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Cyber Security Club - Dhaka International University',
-      description: 'Defend. Learn. Lead. Join our cybersecurity community at Dhaka International University and master the art of digital defense.',
-      images: ['https://www.cybersecdiu.club/logo.png'],
+      title: 'DIU Robotics Club | Dhaka International University',
+      description: 'Official portal of DIU Robotics Club (DIURC) - Learn, Build & Innovate. Join competitive LFR, Robo Soccer, and embedded systems innovation.',
+      images: ['/logo.png'],
     },
   };
 }

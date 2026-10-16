@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Download, Sparkles, QrCode, Cpu, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { Bot, Download, Sparkles, Cpu, ShieldAlert, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { User } from '@/types';
@@ -19,7 +19,7 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const isExecutive = ['PLATFORM_ADMIN', 'PRESIDENT', 'SECRETARY', 'TREASURER', 'EXECUTIVE_MEMBER'].includes(user.role);
-  const memberRegId = user.studentId || `CSC-${user.id.slice(0, 6).toUpperCase()}`;
+  const memberRegId = user.studentId || `DIURC-${user.id.slice(0, 6).toUpperCase()}`;
   const rollNumber = user.rollNumber || '—';
   const batch = user.batch || '—';
   const deptShort = formatDeptShort(user.department);
@@ -35,16 +35,16 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      // Background obsidian gradient
+      // Background obsidian & royal navy gradient
       const bgGrad = ctx.createLinearGradient(0, 0, 1200, 760);
       bgGrad.addColorStop(0, '#040810');
-      bgGrad.addColorStop(0.5, '#071224');
+      bgGrad.addColorStop(0.5, '#071630');
       bgGrad.addColorStop(1, '#02050c');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, 1200, 760);
 
-      // Cyber Grid scanlines
-      ctx.strokeStyle = 'rgba(16, 185, 129, 0.07)';
+      // Hardware Grid scanlines
+      ctx.strokeStyle = 'rgba(37, 99, 235, 0.08)';
       ctx.lineWidth = 1;
       for (let x = 0; x < 1200; x += 40) {
         ctx.beginPath();
@@ -60,13 +60,13 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
       }
 
       // Outer Glowing Card Border
-      ctx.strokeStyle = isExecutive ? '#06b6d4' : '#10b981';
+      ctx.strokeStyle = isExecutive ? '#38bdf8' : '#2563eb';
       ctx.lineWidth = 4;
       ctx.strokeRect(30, 30, 1140, 700);
 
       // Corner Brackets
       const bracketSize = 25;
-      ctx.fillStyle = isExecutive ? '#22d3ee' : '#34d399';
+      ctx.fillStyle = isExecutive ? '#38bdf8' : '#60a5fa';
       // TL
       ctx.fillRect(30, 30, bracketSize, 6);
       ctx.fillRect(30, 30, 6, bracketSize);
@@ -86,43 +86,43 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
 
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 36px monospace';
-      ctx.fillText('CYBER SECURITY CLUB', 60, 95);
+      ctx.fillText('DIU ROBOTICS CLUB', 60, 95);
 
-      ctx.fillStyle = isExecutive ? '#38bdf8' : '#34d399';
+      ctx.fillStyle = isExecutive ? '#38bdf8' : '#60a5fa';
       ctx.font = 'bold 20px monospace';
-      ctx.fillText('OPERATIVE SECURITY IDENTIFIER // DIU', 60, 125);
+      ctx.fillText('ROBOTICS INNOVATOR IDENTIFIER // DIU', 60, 125);
 
       // Clearance Stamp
-      ctx.fillStyle = isExecutive ? 'rgba(6, 182, 212, 0.2)' : 'rgba(16, 185, 129, 0.2)';
+      ctx.fillStyle = isExecutive ? 'rgba(56, 189, 248, 0.2)' : 'rgba(37, 99, 235, 0.2)';
       ctx.fillRect(860, 50, 280, 50);
-      ctx.strokeStyle = isExecutive ? '#06b6d4' : '#10b981';
+      ctx.strokeStyle = isExecutive ? '#38bdf8' : '#2563eb';
       ctx.strokeRect(860, 50, 280, 50);
-      ctx.fillStyle = isExecutive ? '#22d3ee' : '#34d399';
+      ctx.fillStyle = isExecutive ? '#38bdf8' : '#60a5fa';
       ctx.font = 'bold 20px monospace';
       ctx.textAlign = 'center';
-      ctx.fillText(isExecutive ? 'TIER 3 // EXECUTIVE' : 'TIER 1 // OPERATIVE', 1000, 82);
+      ctx.fillText(isExecutive ? 'TIER 3 // EXECUTIVE' : 'TIER 1 // INNOVATOR', 1000, 82);
       ctx.textAlign = 'left';
 
       // Left Column: Member Photo Placeholder / Avatar Shield
       ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
       ctx.fillRect(60, 180, 240, 300);
-      ctx.strokeStyle = isExecutive ? 'rgba(6, 182, 212, 0.5)' : 'rgba(16, 185, 129, 0.5)';
+      ctx.strokeStyle = isExecutive ? 'rgba(56, 189, 248, 0.5)' : 'rgba(37, 99, 235, 0.5)';
       ctx.lineWidth = 2;
       ctx.strokeRect(60, 180, 240, 300);
 
-      ctx.fillStyle = isExecutive ? '#38bdf8' : '#34d399';
+      ctx.fillStyle = isExecutive ? '#38bdf8' : '#60a5fa';
       ctx.font = 'bold 64px sans-serif';
       ctx.textAlign = 'center';
-      const initial = user.name ? user.name.charAt(0).toUpperCase() : 'C';
+      const initial = user.name ? user.name.charAt(0).toUpperCase() : 'R';
       ctx.fillText(initial, 180, 350);
       ctx.font = '14px monospace';
-      ctx.fillText('[VERIFIED OPERATIVE]', 180, 440);
+      ctx.fillText('[VERIFIED INNOVATOR]', 180, 440);
       ctx.textAlign = 'left';
 
       // Right Column: Operative Metadata
       ctx.fillStyle = '#94a3b8';
       ctx.font = '16px monospace';
-      ctx.fillText('OPERATIVE NAME', 350, 210);
+      ctx.fillText('MEMBER NAME', 350, 210);
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 32px monospace';
       ctx.fillText(user.name.toUpperCase(), 350, 250);
@@ -145,22 +145,22 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
       drawField('STATUS', user.membershipStatus || 'ACTIVE', 680, 400);
       drawField('MEMBER SINCE', String(joinYear), 960, 400);
 
-      // Bottom Cryptographic Hash Bar
+      // Bottom Telemetry Hash Bar
       ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
       ctx.fillRect(34, 620, 1132, 106);
 
-      ctx.fillStyle = '#10b981';
+      ctx.fillStyle = '#38bdf8';
       ctx.font = '14px monospace';
-      const hashStr = `SEC_HASH: 0x${user.id.replace(/-/g, '').slice(0, 16).toUpperCase()} • ALGORITHM: SHA-256/ECC • AUTH_NODE: DIU-CSC-01`;
+      const hashStr = `BOT_HASH: 0x${user.id.replace(/-/g, '').slice(0, 16).toUpperCase()} • TELEMETRY: RF-2.4G/PID • NODE: DIU-RC-01`;
       ctx.fillText(hashStr, 60, 660);
 
       ctx.fillStyle = '#64748b';
       ctx.font = '12px monospace';
-      ctx.fillText('AUTHORIZED ACCESS ONLY. UNAUTHORIZED DUPLICATION OR FORGERY IS A CODE VIOLATION.', 60, 690);
+      ctx.fillText('AUTHORIZED DIU ROBOTICS LAB BADGE. FOR OFFICIAL COMPETITION & LAB ACCESS ONLY.', 60, 690);
 
       // Download
       const link = document.createElement('a');
-      link.download = `CSC_Member_Badge_${user.name.replace(/\s+/g, '_')}.png`;
+      link.download = `DIURC_Member_Badge_${user.name.replace(/\s+/g, '_')}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (err) {
@@ -177,7 +177,7 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
         role="button"
         tabIndex={0}
         aria-label="Toggle flip digital ID card"
-        className="relative w-full max-w-lg mx-auto h-[260px] sm:h-[270px] cursor-pointer select-none perspective-1000 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded-2xl"
+        className="relative w-full max-w-lg mx-auto h-[260px] sm:h-[270px] cursor-pointer select-none perspective-1000 focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-2xl"
         style={{ perspective: '1000px' }}
         onClick={() => setIsFlipped(!isFlipped)}
         onKeyDown={(e) => {
@@ -188,31 +188,31 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
         }}
       >
         <motion.div
-          className="relative w-full h-full rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-slate-950 via-[#071224] to-black shadow-2xl transition-all duration-500 hover:border-emerald-400/50 hover:shadow-emerald-500/10"
+          className="relative w-full h-full rounded-2xl border border-blue-500/30 bg-gradient-to-br from-slate-950 via-[#071630] to-black shadow-2xl transition-all duration-500 hover:border-blue-400/50 hover:shadow-blue-500/20"
           animate={{ rotateY: isFlipped ? 180 : 0 }}
           transition={{ duration: 0.6, type: 'spring', stiffness: 260, damping: 20 }}
           style={{ transformStyle: 'preserve-3d' }}
         >
           {/* FRONT SIDE */}
           <div className="absolute inset-0 w-full h-full p-4 sm:p-5 flex flex-col justify-between backface-hidden">
-            {/* Holographic corner brackets */}
-            <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 border-t-2 border-l-2 border-emerald-400" />
-            <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 border-t-2 border-r-2 border-emerald-400" />
-            <div className="absolute bottom-2.5 left-2.5 w-3.5 h-3.5 border-b-2 border-l-2 border-emerald-400" />
-            <div className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 border-b-2 border-r-2 border-emerald-400" />
+            {/* Corner brackets */}
+            <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 border-t-2 border-l-2 border-blue-400" />
+            <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 border-t-2 border-r-2 border-blue-400" />
+            <div className="absolute bottom-2.5 left-2.5 w-3.5 h-3.5 border-b-2 border-l-2 border-blue-400" />
+            <div className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 border-b-2 border-r-2 border-blue-400" />
 
             {/* Top Bar: Club Branding & Clearance */}
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-500/40 bg-emerald-500/10 shadow-inner">
-                  <ShieldCheck className="h-5 w-5 text-emerald-400" />
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-blue-500/40 bg-blue-500/10 shadow-inner">
+                  <Bot className="h-5 w-5 text-blue-400" />
                 </div>
                 <div>
                   <h3 className="font-mono text-sm font-black tracking-wider text-white">
-                    CYBER SECURITY CLUB
+                    DIU ROBOTICS CLUB
                   </h3>
-                  <p className="font-mono text-[10px] text-emerald-400/80">
-                    OPERATIVE IDENTIFIER // DIU
+                  <p className="font-mono text-[10px] text-cyan-400/80">
+                    ROBOTICS INNOVATOR IDENTIFIER // DIU
                   </p>
                 </div>
               </div>
@@ -222,29 +222,29 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
                 className={`font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 ${
                   isExecutive
                     ? 'border-cyan-500/50 bg-cyan-500/10 text-cyan-300'
-                    : 'border-emerald-500/50 bg-emerald-500/10 text-emerald-300'
+                    : 'border-blue-500/50 bg-blue-500/10 text-blue-300'
                 }`}
               >
                 <Cpu className="mr-1 h-2.5 w-2.5" />
-                {isExecutive ? 'TIER 3 // EXEC' : 'TIER 1 // OPERATIVE'}
+                {isExecutive ? 'TIER 3 // EXEC' : 'TIER 1 // INNOVATOR'}
               </Badge>
             </div>
 
             {/* Member Details Layout */}
             <div className="grid grid-cols-3 gap-3.5 items-center my-auto">
               {/* Avatar Box */}
-              <div className="col-span-1 flex flex-col items-center justify-center rounded-xl border border-emerald-500/20 bg-slate-900/60 p-2">
-                <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-xl border-2 border-emerald-400/40 bg-emerald-950/40 text-2xl font-black text-emerald-300 shadow-md overflow-hidden">
+              <div className="col-span-1 flex flex-col items-center justify-center rounded-xl border border-blue-500/20 bg-slate-900/60 p-2">
+                <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-xl border-2 border-blue-400/40 bg-blue-950/40 text-2xl font-black text-blue-300 shadow-md overflow-hidden">
                   {user.avatar ? (
                     <img src={getOptimizedAvatarUrl(user.avatar) || user.avatar} alt={user.name} className="h-full w-full object-cover" />
                   ) : (
-                    user.name ? user.name.charAt(0).toUpperCase() : 'C'
+                    user.name ? user.name.charAt(0).toUpperCase() : 'R'
                   )}
-                  <div className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-slate-950 shadow">
+                  <div className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white shadow">
                     <CheckCircle2 className="h-3.5 w-3.5" />
                   </div>
                 </div>
-                <span className="mt-1 font-mono text-[8px] sm:text-[9px] uppercase tracking-wider text-emerald-400 font-bold">
+                <span className="mt-1 font-mono text-[8px] sm:text-[9px] uppercase tracking-wider text-blue-400 font-bold">
                   VERIFIED
                 </span>
               </div>
@@ -252,7 +252,7 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
               {/* Info Matrix */}
               <div className="col-span-2 space-y-2 font-mono">
                 <div>
-                  <span className="text-[9px] text-gray-400 uppercase">Operative Name</span>
+                  <span className="text-[9px] text-gray-400 uppercase">Innovator Name</span>
                   <p className="text-sm font-bold text-white tracking-wide truncate">{user.name}</p>
                 </div>
 
@@ -267,7 +267,7 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
                   </div>
                   <div>
                     <span className="text-[9px] text-gray-400 uppercase">Dept</span>
-                    <p className="font-bold text-emerald-400">{deptShort}</p>
+                    <p className="font-bold text-blue-400">{deptShort}</p>
                   </div>
                   <div>
                     <span className="text-[9px] text-gray-400 uppercase">Reg ID</span>
@@ -279,9 +279,9 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
 
             {/* Card Footer: Scanline & Hash */}
             <div className="flex items-center justify-between border-t border-white/10 pt-2 font-mono text-[9px] sm:text-[10px] text-gray-400">
-              <div className="flex items-center gap-1.5 text-emerald-400">
+              <div className="flex items-center gap-1.5 text-blue-400">
                 <Sparkles className="h-3 w-3 animate-pulse" />
-                <span>SEC_HASH: 0x{user.id.slice(0, 8).toUpperCase()}</span>
+                <span>BOT_HASH: 0x{user.id.slice(0, 8).toUpperCase()}</span>
               </div>
               <span className="text-gray-500 text-[9px]">CLICK TO FLIP CARD ➔</span>
             </div>
@@ -292,37 +292,37 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
             className="absolute inset-0 w-full h-full p-4 sm:p-5 flex flex-col justify-between backface-hidden font-mono text-xs"
             style={{ transform: 'rotateY(180deg)' }}
           >
-            {/* Holographic corner brackets */}
-            <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 border-t-2 border-l-2 border-emerald-400" />
-            <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 border-t-2 border-r-2 border-emerald-400" />
-            <div className="absolute bottom-2.5 left-2.5 w-3.5 h-3.5 border-b-2 border-l-2 border-emerald-400" />
-            <div className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 border-b-2 border-r-2 border-emerald-400" />
+            {/* Corner brackets */}
+            <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 border-t-2 border-l-2 border-blue-400" />
+            <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 border-t-2 border-r-2 border-blue-400" />
+            <div className="absolute bottom-2.5 left-2.5 w-3.5 h-3.5 border-b-2 border-l-2 border-blue-400" />
+            <div className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 border-b-2 border-r-2 border-blue-400" />
 
             <div className="flex items-center justify-between border-b border-white/10 pb-2">
-              <div className="flex items-center gap-2 text-amber-400 font-bold">
+              <div className="flex items-center gap-2 text-cyan-400 font-bold">
                 <ShieldAlert className="h-4 w-4" />
-                <span className="text-xs">OPERATIVE CODE OF ETHICS</span>
+                <span className="text-xs">ROBOTICS INNOVATOR CODE OF ETHICS</span>
               </div>
               <span className="text-[10px] text-gray-400">EST. {joinYear}</span>
             </div>
 
             <div className="space-y-1.5 text-[10px] sm:text-[11px] leading-relaxed text-gray-300 my-auto">
               <p>
-                1. <strong className="text-white">Responsible Disclosure:</strong> Always act with authorization and adhere to ethical standards.
+                1. <strong className="text-white">Safety & Lab Standards:</strong> Always operate high-power actuators, LiPo batteries, and machine tools with lab safety protocols.
               </p>
               <p>
-                2. <strong className="text-white">Continuous Defense:</strong> Sharpen defensive & offensive cyber competencies for community benefit.
+                2. <strong className="text-white">Open Innovation:</strong> Collaborate transparently, share blueprints, and mentor peers in autonomous engineering.
               </p>
               <p>
-                3. <strong className="text-white">Integrity & Honor:</strong> Misuse of knowledge or security tools results in revocation of credentials.
+                3. <strong className="text-white">Integrity & Sportsmanship:</strong> Adhere strictly to competition weight/size rules and compete honorably in all arenas.
               </p>
             </div>
 
             <div className="flex items-center justify-between border-t border-white/10 pt-2 text-[10px] text-gray-400">
               <div>
-                <span>DISPATCH: soc@diu.cyber.edu</span>
+                <span>DISPATCH: robotics@diu.ac.bd</span>
               </div>
-              <span className="text-emerald-400 font-semibold">AUTHENTICATED CARD</span>
+              <span className="text-blue-400 font-semibold">AUTHENTICATED BADGE</span>
             </div>
           </div>
         </motion.div>
@@ -335,7 +335,7 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
           variant="outline"
           onClick={handleDownloadCard}
           disabled={isGeneratingPng}
-          className="border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 font-mono text-xs"
+          className="border-blue-500/30 bg-blue-500/10 text-blue-300 hover:bg-blue-500/20 font-mono text-xs"
         >
           <Download className="mr-1.5 h-3.5 w-3.5" />
           {isGeneratingPng ? 'Generating Badge...' : 'Download Badge (PNG)'}

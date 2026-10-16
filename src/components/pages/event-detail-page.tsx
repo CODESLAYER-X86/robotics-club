@@ -306,8 +306,8 @@ export function EventDetailPage() {
     if (navigator.share && /mobile|android|iphone/i.test(navigator.userAgent)) {
       try {
         await navigator.share({
-          title: event?.title || 'Cyber Security Club Event',
-          text: `Check out "${event?.title}" organized by Cyber Security Club, DIU!`,
+          title: event?.title || 'DIU Robotics Club Event',
+          text: `Check out "${event?.title}" organized by DIU Robotics Club, DIU!`,
           url,
         });
         return;

@@ -1091,7 +1091,7 @@ export function ProfilePage() {
 
                         <div>
                           <h3 className="font-bold text-white text-base line-clamp-1">
-                            {cert.event?.title || 'Cyber Security Club Certification'}
+                            {cert.event?.title || 'DIU Robotics Club Certification'}
                           </h3>
                           <div className="mt-2 flex flex-wrap items-center gap-1.5">
                             <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 text-[10px]">

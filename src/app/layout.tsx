@@ -30,32 +30,47 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Cyber Security Club - Cybersecurity Community Platform",
-  description: "Defend. Learn. Lead. Join our cybersecurity community at Dhaka International University and master the art of digital defense.",
-  keywords: ["Cyber Security Club", "Cybersecurity", "CTF", "Ethical Hacking", "Club", "Security Training", "Dhaka International University", "DIU"],
-  authors: [{ name: "Cyber Security Club" }],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://roboticsdiu.club'),
+  title: "DIU Robotics Club | Dhaka International University",
+  description: "Official portal of DIU Robotics Club (DIURC) - Learn, Build & Innovate. Join competitive LFR, Robo Soccer, and embedded systems innovation.",
+  keywords: [
+    "DIU Robotics Club",
+    "DIURC",
+    "Robotics",
+    "Line Follower Robot",
+    "LFR",
+    "Robo Soccer",
+    "Combat Robotics",
+    "Embedded Systems",
+    "IoT",
+    "Drones",
+    "Autonomous Systems",
+    "Dhaka International University",
+    "DIU",
+  ],
+  authors: [{ name: "DIU Robotics Club" }],
   icons: {
     icon: "/logo.png",
   },
   openGraph: {
-    title: "Cyber Security Club - Dhaka International University",
-    description: "Defend. Learn. Lead. Join our cybersecurity community at Dhaka International University and master the art of digital defense.",
+    title: "DIU Robotics Club | Dhaka International University",
+    description: "Official portal of DIU Robotics Club (DIURC) - Learn, Build & Innovate. Join competitive LFR, Robo Soccer, and embedded systems innovation.",
     type: "website",
-    siteName: "Cyber Security Club",
+    siteName: "DIU Robotics Club",
     images: [
       {
-        url: "https://www.cybersecdiu.club/logo.png",
+        url: "/logo.png",
         width: 800,
         height: 800,
-        alt: "Cyber Security Club Logo",
+        alt: "DIU Robotics Club Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cyber Security Club - Dhaka International University",
-    description: "Defend. Learn. Lead. Join our cybersecurity community at Dhaka International University and master the art of digital defense.",
-    images: ["https://www.cybersecdiu.club/logo.png"],
+    title: "DIU Robotics Club | Dhaka International University",
+    description: "Official portal of DIU Robotics Club (DIURC) - Learn, Build & Innovate. Join competitive LFR, Robo Soccer, and embedded systems innovation.",
+    images: ["/logo.png"],
   },
 };
 

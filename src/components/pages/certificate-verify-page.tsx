@@ -59,7 +59,7 @@ export function CertificateVerifyPage() {
   const [copied, setCopied] = useState(false);
 
   const shareUrl = typeof window !== 'undefined' && result ? `${window.location.origin}/?cert=${result.certificateCode}` : '';
-  const shareText = result ? `I earned a ${CERTIFICATE_TYPE_LABELS[result.type]} certificate from Cyber Security Club! 🛡️🔐` : '';
+  const shareText = result ? `I earned a ${CERTIFICATE_TYPE_LABELS[result.type]} certificate from DIU Robotics Club! 🤖⚡` : '';
 
   const handleLinkedInShare = () => {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank', 'width=600,height=400');
@@ -67,8 +67,8 @@ export function CertificateVerifyPage() {
 
   const handleLinkedInAddToProfile = () => {
     if (!result) return;
-    const name = encodeURIComponent(result.event?.title || 'Cyber Security Club Certification');
-    const orgName = encodeURIComponent('Cyber Security Club');
+    const name = encodeURIComponent(result.event?.title || 'DIU Robotics Club Certification');
+    const orgName = encodeURIComponent('DIU Robotics Club');
     const date = result.issuedAt ? new Date(result.issuedAt) : new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;

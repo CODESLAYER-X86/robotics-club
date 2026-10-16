@@ -977,11 +977,11 @@ export function CertificateDesigner() {
     .replace('{{event_name}}', eventTitle)
     .replace('{{certificate_type}}', CERT_TYPE_LABELS[previewType] || previewType)
     .replace('{{position}}', previewType.includes('PLACE') ? CERT_TYPE_LABELS[previewType] : 'Winner')
-    .replace('{{certificate_id}}', 'CSC-2026-CYBERSEC-00125')
+    .replace('{{certificate_id}}', 'DIURC-2026-ROBOTICS-00125')
     .replace('{{issue_date}}', 'June 15, 2026');
 
   const textPreviewValues: Record<TextElementKey, string> = {
-    headerTitle: 'CYBER SECURITY CLUB',
+    headerTitle: 'DIU ROBOTICS CLUB',
     headerSubtitle: 'VERIFIED DIGITAL CERTIFICATE',
     intro: 'This is to certify that',
     recipientName: 'Md. Rahim Uddin Shuvo',
@@ -991,8 +991,8 @@ export function CertificateDesigner() {
     description: previewDesc,
     issueDate: 'June 15, 2026',
     issueDateLabel: 'Issue Date',
-    certificateId: 'CSC-2026-CYBERSEC-00125',
-    footer: 'Verification URL: https://cybersec.club/?cert=CSC-2026-CYBERSEC-00125',
+    certificateId: 'DIURC-2026-ROBOTICS-00125',
+    footer: 'Verification URL: https://roboticsdiu.club/?cert=DIURC-2026-ROBOTICS-00125',
   };
 
   const selectedTextKey = selectedElement?.kind === 'text' ? selectedElement.key : null;

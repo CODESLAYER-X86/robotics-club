@@ -389,11 +389,11 @@ export function GalleryPage() {
               <Camera className="h-7 w-7 text-emerald-400" />
             </div>
             <div>
-              <h1 className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              <h1 className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
                 Event Gallery
               </h1>
               <p className="mt-1 text-gray-400">
-                Capturing moments from our cybersecurity journey
+                Capturing moments from our robotics & engineering journey
               </p>
             </div>
           </motion.div>
@@ -947,8 +947,8 @@ function EmptyState({
             </h3>
             <p className="text-xs sm:text-sm text-gray-300 max-w-md mx-auto leading-relaxed">
               {canUpload
-                ? 'You have executive authorization to publish new event snapshots, workshop photos, and CTF victory moments.'
-                : 'Official photos from DIU Cyber Security Club workshops, hackathons, and CTF competitions will be featured here.'}
+                ? 'You have executive authorization to publish new event snapshots, workshop photos, and robotics tournament moments.'
+                : 'Official photos from DIU Robotics Club workshops, competitions, and robot battle leagues will be featured here.'}
             </p>
           </div>
 
@@ -956,7 +956,7 @@ function EmptyState({
             {canUpload ? (
               <Button
                 onClick={onUploadClick}
-                className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold font-mono text-xs px-6 h-11 rounded-xl shadow-lg shadow-emerald-500/20 active:scale-95 transition-all"
+                className="bg-blue-600 hover:bg-blue-500 text-white font-bold font-mono text-xs px-6 h-11 rounded-xl shadow-lg shadow-blue-500/20 active:scale-95 transition-all"
               >
                 <Plus className="mr-1.5 h-4 w-4 stroke-[3]" />
                 Upload First Photo

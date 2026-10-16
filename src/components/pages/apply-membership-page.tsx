@@ -302,7 +302,7 @@ export function ApplyMembershipPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-bold text-white font-mono">SIGN IN TO APPLY</h2>
             <p className="text-sm text-gray-300 leading-relaxed">
-              Please sign in with your Google or student account first so we can link your official DIU Cyber Security Club membership and digital badge.
+              Please sign in with your Google or student account first so we can link your official DIU Robotics Club membership and digital badge.
             </p>
           </div>
           <div className="space-y-3 pt-2">

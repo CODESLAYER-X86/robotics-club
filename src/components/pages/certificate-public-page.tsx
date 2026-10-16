@@ -145,7 +145,7 @@ export function CertificatePublicPage() {
   const idX = layout.certId ? (layout.certId.x || (width / 2)) : (width / 2);
   const idY = layout.certId ? (layout.certId.y || 480) : 480;
 
-  const host = typeof window !== 'undefined' ? window.location.host : 'cybersec.club';
+  const host = typeof window !== 'undefined' ? window.location.host : 'roboticsdiu.club';
   const protocol = typeof window !== 'undefined' && window.location.hostname.includes('localhost') ? 'http' : 'https';
   const verifyUrl = `${protocol}://${host}/?cert=${cert?.certificateCode || ''}`;
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=ffffff&bgcolor=0a0a0a&data=${encodeURIComponent(verifyUrl)}`;
@@ -160,8 +160,8 @@ export function CertificatePublicPage() {
 
   const handleLinkedInAddToProfile = () => {
     if (!cert) return;
-    const name = encodeURIComponent(cert.event?.title || 'Cyber Security Club Certification');
-    const orgName = encodeURIComponent('Cyber Security Club');
+    const name = encodeURIComponent(cert.event?.title || 'DIU Robotics Club Certification');
+    const orgName = encodeURIComponent('DIU Robotics Club');
     const date = cert.issuedAt ? new Date(cert.issuedAt) : new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -172,7 +172,7 @@ export function CertificatePublicPage() {
   };
 
   const handleTwitterShare = () => {
-    const text = `I earned a ${CERT_TYPE_LABELS[templateType]} certificate from Cyber Security Club! 🛡️🔐`;
+    const text = `I earned a ${CERT_TYPE_LABELS[templateType]} certificate from DIU Robotics Club! 🤖⚡`;
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(verifyUrl)}`,
       '_blank',
@@ -394,7 +394,7 @@ export function CertificatePublicPage() {
                   <text x="60" y="75" text-anchor="middle" fontFamily="sans-serif" fontSize="28" fill={primaryColor}>✓</text>
                 </g>
                 
-                <text x={width / 2} y={isLandscape ? 210 : 230} text-anchor="middle" fontFamily="sans-serif" fontSize="22" fontWeight="bold" fill="#ffffff" letterSpacing="6">CYBER SECURITY CLUB</text>
+                <text x={width / 2} y={isLandscape ? 210 : 230} text-anchor="middle" fontFamily="sans-serif" fontSize="22" fontWeight="bold" fill="#ffffff" letterSpacing="6">DIU ROBOTICS CLUB</text>
                 <text x={width / 2} y={isLandscape ? 235 : 255} text-anchor="middle" fontFamily="sans-serif" fontSize="12" fill="#6b7280" letterSpacing="2">VERIFIED DIGITAL CERTIFICATE</text>
                 
                 <text x={width / 2} y={isLandscape ? 290 : 320} text-anchor="middle" fontFamily="sans-serif" fontSize="16" fill="#9ca3af">This is to certify that</text>

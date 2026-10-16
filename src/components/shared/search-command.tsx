@@ -29,6 +29,7 @@ import {
   Zap,
   Clock,
   TrendingUp,
+  Bot,
 } from 'lucide-react';
 import { useAppStore } from '@/store/use-app-store';
 import type { AppView, Event, User as UserType } from '@/types';
@@ -72,7 +73,7 @@ const PAGES: PageItem[] = [
   { label: 'Deposits', view: 'deposits', icon: TrendingUp, description: 'Record and approve deposits' },
   { label: 'Expenses', view: 'expenses', icon: Receipt, description: 'Track expenses' },
   { label: 'Verify Payments', view: 'verify-payments', icon: CheckCircle, description: 'Verify payment proofs' },
-  { label: 'About', view: 'about', icon: Globe, description: 'About Cyber Security Club' },
+  { label: 'About', view: 'about', icon: Globe, description: 'About DIU Robotics Club' },
 ];
 
 const EVENT_CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -203,15 +204,15 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
     <CommandDialog
       open={open}
       onOpenChange={onOpenChange}
-      title="Search Cyber Security Club Platform"
+      title="Search DIU Robotics Club Platform"
       description="Search across pages, events, and members"
-      className="border-white/10 bg-[#0d0d0d] text-gray-200 sm:max-w-xl"
+      className="border-white/10 bg-[#070e18] text-gray-200 sm:max-w-xl"
     >
-      {/* Custom search input with cybersecurity styling */}
+      {/* Custom search input with robotics styling */}
       <div className="flex items-center border-b border-white/10 px-4">
         <div className="flex items-center gap-2 mr-3">
-          <Terminal className="h-4 w-4 text-emerald-400" />
-          <span className="text-[10px] font-mono text-emerald-400/60">&gt;</span>
+          <Terminal className="h-4 w-4 text-blue-400" />
+          <span className="text-[10px] font-mono text-blue-400/60">&gt;</span>
         </div>
         <input
           placeholder="Search pages, events, members..."
@@ -455,8 +456,8 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
           </div>
         </div>
         <div className="flex items-center gap-1.5 text-[10px] text-gray-700">
-          <Shield className="h-3 w-3" />
-          <span className="font-mono">Cyber Security Search</span>
+          <Bot className="h-3 w-3 text-blue-400/80" />
+          <span className="font-mono text-gray-500">DIU Robotics Search</span>
         </div>
       </div>
     </CommandDialog>
