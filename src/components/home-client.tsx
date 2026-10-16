@@ -40,6 +40,8 @@ export function HomeClient() {
     const viewParam = params.get('view');
     if (viewParam && isValidAppView(viewParam)) {
       setCurrentView(viewParam as AppView, { replace: true });
+    } else if (params.get('error')) {
+      setCurrentView('login', { replace: true });
     }
 
     // Clean google_auth param if present

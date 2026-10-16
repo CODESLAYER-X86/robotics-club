@@ -87,7 +87,7 @@ export function RegisterPage() {
 
             <p className="mt-6 text-center text-xs text-gray-500">
               Already have an account?{' '}
-              <button onClick={() => setCurrentView('login')} className="text-emerald-400 hover:text-emerald-300">
+              <button onClick={() => setCurrentView('login')} className="text-blue-400 hover:text-blue-300">
                 Sign In
               </button>
             </p>

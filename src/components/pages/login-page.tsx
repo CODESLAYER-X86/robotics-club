@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createSupabaseBrowser } from '@/lib/supabase-browser';
 import { motion } from 'framer-motion';
 import { AlertCircle, Loader2 } from 'lucide-react';
@@ -8,11 +8,24 @@ import { useAppStore } from '@/store/use-app-store';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
-
 export function LoginPage() {
   const [error, setError] = useState('');
   const [googleLoading, setGoogleLoading] = useState(false);
   const { setCurrentView } = useAppStore();
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const err = params.get('error');
+    const reason = params.get('reason');
+    if (err) {
+      if (reason) {
+        setError(`Google Authentication Error: ${decodeURIComponent(reason)}`);
+      } else {
+        setError('Google sign-in could not be completed. Please try again or disable browser shields.');
+      }
+    }
+  }, []);
 
   const handleGoogleSignIn = async () => {
     setGoogleLoading(true);
@@ -86,7 +99,7 @@ export function LoginPage() {
 
             <p className="mt-6 text-center text-xs text-gray-500">
               New member?{' '}
-              <button onClick={() => setCurrentView('register')} className="text-emerald-400 hover:text-emerald-300">Join with Google</button>
+              <button onClick={() => setCurrentView('register')} className="text-blue-400 hover:text-blue-300">Join with Google</button>
             </p>
           </CardContent>
         </Card>

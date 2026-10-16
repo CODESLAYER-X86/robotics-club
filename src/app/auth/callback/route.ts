@@ -9,30 +9,52 @@ import { isPlatformAdminEmail } from '@/lib/auth';
  * Flow: Google → Supabase → here → upsert Prisma user → redirect to /?google_auth=1
  */
 export async function GET(request: NextRequest) {
-  const { searchParams, origin } = new URL(request.url);
+  const { searchParams } = new URL(request.url);
   const code = searchParams.get('code');
+  const errorParam = searchParams.get('error');
+  const errorDesc = searchParams.get('error_description');
+
+  // Robust origin resolution behind Vercel load balancers and proxies
+  const forwardedHost = request.headers.get('x-forwarded-host') || request.headers.get('host');
+  const forwardedProto = request.headers.get('x-forwarded-proto') || 'https';
+  const origin = forwardedHost
+    ? `${forwardedProto}://${forwardedHost}`
+    : (process.env.NEXT_PUBLIC_APP_URL || new URL(request.url).origin);
+
+  // If Supabase or Google returned an error directly in URL
+  if (errorParam) {
+    console.error('[Google OAuth] Callback received error from provider:', errorParam, errorDesc);
+    const reason = encodeURIComponent(errorDesc || errorParam);
+    return NextResponse.redirect(`${origin}/?error=google_auth_failed&reason=${reason}`);
+  }
 
   if (!code) {
-    return NextResponse.redirect(`${origin}/?error=google_no_code`);
+    return NextResponse.redirect(`${origin}/?error=google_no_code&reason=No%20authorization%20code%20provided`);
   }
 
   const cookieStore = await cookies();
 
   // Create the redirect response FIRST so we can write cookies onto it.
-  // In App Router GET handlers, cookies() is read-only — we must write to
-  // the NextResponse object instead.
   const successResponse = NextResponse.redirect(`${origin}/?google_auth=1`);
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const supabaseKey = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)!;
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    supabaseUrl,
+    supabaseKey,
     {
       cookies: {
         getAll: () => cookieStore.getAll(),
         setAll: (cookiesToSet) => {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            successResponse.cookies.set(name, value, options),
-          );
+          cookiesToSet.forEach(({ name, value, options }) => {
+            try {
+              cookieStore.set(name, value, options);
+            } catch {
+              // Server component write fallback
+            }
+            successResponse.cookies.set(name, value, options);
+          });
         },
       },
     },
@@ -49,12 +71,13 @@ export async function GET(request: NextRequest) {
       user = existingSession.user;
     } else {
       console.error('[Google OAuth] exchangeCodeForSession error:', error?.message);
-      return NextResponse.redirect(`${origin}/?error=google_auth_failed`);
+      const reason = encodeURIComponent(error?.message || 'Exchange code for session failed');
+      return NextResponse.redirect(`${origin}/?error=google_auth_failed&reason=${reason}`);
     }
   }
 
   if (!user) {
-    return NextResponse.redirect(`${origin}/?error=google_auth_failed`);
+    return NextResponse.redirect(`${origin}/?error=google_auth_failed&reason=User%20session%20is%20empty`);
   }
 
   const email = user.email;
