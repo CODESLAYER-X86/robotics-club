@@ -55,6 +55,8 @@ server.log
 
 # Agent/Workspace directories
 .agent
+.agents
+skills-lock.json
 .superpowers
 .x86-kit
 *.tar
