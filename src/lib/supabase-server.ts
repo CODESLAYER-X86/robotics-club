@@ -3,6 +3,8 @@ import { cookies } from "next/headers";
 import { isPlatformAdminEmail } from "@/lib/auth";
 import prisma from "@/lib/db";
 
+import { getSupabaseConfig } from "./supabase-config";
+
 /**
  * Server-side session guard using Supabase cookies.
  * Primary session guard for all API routes.
@@ -17,11 +19,10 @@ export async function getSupabaseUser(allowedRoles?: string[]): Promise<{
 } | null> {
   try {
     const cookieStore = await cookies();
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseKey = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)!;
+    const { url, key } = getSupabaseConfig();
     const supabase = createServerClient(
-      supabaseUrl,
-      supabaseKey,
+      url,
+      key,
       {
         cookies: {
           getAll: () => cookieStore.getAll(),

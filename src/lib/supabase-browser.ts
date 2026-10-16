@@ -1,8 +1,8 @@
 import { createBrowserClient } from '@supabase/ssr';
+import { getSupabaseConfig } from './supabase-config';
 
 /** Supabase browser client — used only for Google OAuth sign-in. */
 export function createSupabaseBrowser() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const supabaseKey = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)!;
-  return createBrowserClient(supabaseUrl, supabaseKey);
+  const { url, key } = getSupabaseConfig();
+  return createBrowserClient(url, key);
 }

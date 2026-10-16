@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import prisma from '@/lib/db';
 import { isPlatformAdminEmail } from '@/lib/auth';
+import { getSupabaseConfig } from '@/lib/supabase-config';
 
 /**
  * Supabase Google OAuth callback.
@@ -37,8 +38,13 @@ export async function GET(request: NextRequest) {
   // Create the redirect response FIRST so we can write cookies onto it.
   const successResponse = NextResponse.redirect(`${origin}/?google_auth=1`);
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const supabaseKey = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)!;
+  const { url: supabaseUrl, key: supabaseKey } = getSupabaseConfig();
+
+  if (!supabaseUrl || !supabaseKey) {
+    const missing = !supabaseUrl ? 'NEXT_PUBLIC_SUPABASE_URL' : 'NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY';
+    console.error(`[Google OAuth] Missing environment variable: ${missing}`);
+    return NextResponse.redirect(`${origin}/?error=google_auth_failed&reason=Missing%20${missing}%20in%20Vercel%20environment%20variables`);
+  }
 
   const supabase = createServerClient(
     supabaseUrl,

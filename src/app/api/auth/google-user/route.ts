@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/db';
 import { isPlatformAdminEmail } from '@/lib/auth';
+import { getSupabaseConfig } from '@/lib/supabase-config';
 
 /**
  * GET /api/auth/google-user
@@ -11,8 +12,7 @@ import { isPlatformAdminEmail } from '@/lib/auth';
  */
 export async function GET() {
   const cookieStore = await cookies();
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const supabaseKey = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)!;
+  const { url: supabaseUrl, key: supabaseKey } = getSupabaseConfig();
 
   const supabase = createServerClient(
     supabaseUrl,
