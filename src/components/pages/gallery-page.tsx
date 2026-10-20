@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { useAppStore } from '@/store/use-app-store';
 import { toast } from '@/hooks/use-toast';
-import { uploadToSupabase } from '@/lib/upload';
+import { uploadImage } from '@/lib/upload';
 import type { GalleryImage, GalleryCategory, Event } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -259,8 +259,8 @@ export function GalleryPage() {
 
     setUploading(true);
     try {
-      // Step 1: Upload file directly to Supabase Storage
-      const imageUrl = await uploadToSupabase(selectedFile, 'gallery');
+      // Step 1: Upload file (Cloudflare R2 with automatic Supabase fallback)
+      const imageUrl = await uploadImage(selectedFile, 'gallery');
 
       // Step 2: Create gallery entry
       const galleryRes = await fetch('/api/gallery', {
