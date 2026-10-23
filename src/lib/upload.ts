@@ -8,74 +8,85 @@ const ALLOWED_MIME_TYPES = new Set([
 ]);
 
 const ALLOWED_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'webp', 'gif']);
-const MAX_SUPABASE_FILE_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB for Supabase
-const MAX_R2_FILE_SIZE_BYTES = 15 * 1024 * 1024; // 15 MB for Gallery on Cloudflare R2
+const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
 
 /**
- * Upload a file directly to Cloudflare R2 using a secure presigned PUT URL.
- * Bypasses Vercel's 4.5MB serverless body limit and incurs $0 egress bandwidth fees.
+ * Compresses an image client-side to WebP format with dimension bounds.
+ * Falls back to original file if compression is unsupported or fails.
  */
-export async function uploadToR2(file: File, folder: string = 'gallery'): Promise<string> {
-  if (file.size > MAX_R2_FILE_SIZE_BYTES) {
-    throw new Error('Gallery image exceeds the 15MB limit');
+export async function compressImageToWebp(file: File, maxWidth = 1400, quality = 0.82): Promise<File> {
+  if (file.type === 'image/gif' || file.type === 'image/svg+xml') {
+    return file;
   }
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.src = url;
 
-  if (!ALLOWED_MIME_TYPES.has(file.type)) {
-    throw new Error('Invalid file type. Only JPEG, PNG, WEBP, and GIF images are permitted.');
-  }
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let { width, height } = img;
+      if (width > maxWidth) {
+        height = Math.round((height * maxWidth) / width);
+        width = maxWidth;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return resolve(file);
 
-  // 1. Request presigned upload URL from our authenticated API route
-  const presignRes = await fetch('/api/upload/r2/presign', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      filename: file.name,
-      contentType: file.type,
-      folder,
-    }),
+      ctx.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) return resolve(file);
+          const newName = file.name.replace(/\.[^.]+$/, '') + '.webp';
+          const compressed = new File([blob], newName, { type: 'image/webp' });
+          resolve(compressed);
+        },
+        'image/webp',
+        quality
+      );
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      resolve(file);
+    };
   });
-
-  const presignData = await presignRes.json();
-  if (!presignRes.ok || !presignData.success) {
-    throw new Error(presignData.error || 'Failed to acquire direct upload URL');
-  }
-
-  const { uploadUrl, publicUrl } = presignData.data;
-
-  // 2. Direct binary PUT from browser to Cloudflare R2 edge
-  const uploadRes = await fetch(uploadUrl, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': file.type,
-    },
-    body: file,
-  });
-
-  if (!uploadRes.ok) {
-    throw new Error(`Direct upload to Cloudflare R2 failed: HTTP ${uploadRes.status}`);
-  }
-
-  return publicUrl;
 }
 
 /**
  * Upload a file to Supabase Storage from the browser with strict security validation.
- * Used for Committee Member portraits and Member Achievement verification proofs.
+ * Returns the public URL or throws on failure.
  *
- * Bucket: "uploads"
+ * Bucket: "uploads" (must be public, created in Supabase dashboard)
  * Path:   {folder}/{timestamp}-{random}.{ext}
  */
 export async function uploadToSupabase(file: File, folder: string = 'uploads'): Promise<string> {
-  if (file.size > MAX_SUPABASE_FILE_SIZE_BYTES) {
+  // Validate file size
+  if (file.size > MAX_FILE_SIZE_BYTES) {
     throw new Error('File size exceeds the 5MB limit');
   }
 
+  // Validate MIME type
   if (!ALLOWED_MIME_TYPES.has(file.type)) {
     throw new Error('Invalid file type. Only JPEG, PNG, WEBP, and GIF images are permitted.');
   }
 
-  const rawExt = file.name.split('.').pop()?.toLowerCase() || '';
-  const ext = ALLOWED_EXTENSIONS.has(rawExt) ? rawExt : 'jpg';
+  // Automatically optimize image to WebP client-side if possible
+  let optimizedFile = file;
+  try {
+    optimizedFile = await compressImageToWebp(file, 1400, 0.82);
+  } catch {
+    optimizedFile = file;
+  }
+
+  // Sanitize file extension
+  const rawExt = optimizedFile.name.split('.').pop()?.toLowerCase() || '';
+  const ext = ALLOWED_EXTENSIONS.has(rawExt) ? rawExt : 'webp';
+
+  // Sanitize folder to prevent path traversal
   const sanitizedFolder = folder.replace(/[^a-zA-Z0-9_-]/g, '') || 'uploads';
 
   const supabase = createSupabaseBrowser();
@@ -84,10 +95,10 @@ export async function uploadToSupabase(file: File, folder: string = 'uploads'): 
 
   const { error } = await supabase.storage
     .from('uploads')
-    .upload(storagePath, file, {
+    .upload(storagePath, optimizedFile, {
       cacheControl: '3600',
       upsert: false,
-      contentType: file.type,
+      contentType: optimizedFile.type,
     });
 
   if (error) {
@@ -99,18 +110,69 @@ export async function uploadToSupabase(file: File, folder: string = 'uploads'): 
 }
 
 /**
- * Smart hybrid uploader:
- * - 'gallery' ➔ Cloudflare R2 (with automatic Supabase fallback if R2 is not yet configured)
- * - 'committee', 'achievements', and others ➔ Supabase Storage
+ * Upload a file to Cloudflare R2 via our server API route (/api/upload).
+ * Compresses the image client-side to WebP first, then posts formData.
+ * Automatically falls back to Supabase Storage if R2 is not configured or fails.
  */
-export async function uploadImage(file: File, folder: string): Promise<string> {
-  if (folder === 'gallery') {
-    try {
-      return await uploadToR2(file, 'gallery');
-    } catch (err) {
-      console.warn('[Storage] Cloudflare R2 direct upload unavailable, falling back to Supabase:', err);
-      return await uploadToSupabase(file, 'gallery');
-    }
+export async function uploadToR2(file: File, folder: string = 'gallery'): Promise<string> {
+  // Validate file size
+  if (file.size > MAX_FILE_SIZE_BYTES) {
+    throw new Error('File size exceeds the 5MB limit');
   }
-  return await uploadToSupabase(file, folder);
+
+  // Validate MIME type
+  if (!ALLOWED_MIME_TYPES.has(file.type)) {
+    throw new Error('Invalid file type. Only JPEG, PNG, WEBP, and GIF images are permitted.');
+  }
+
+  // Optimize image to WebP client-side
+  let optimizedFile = file;
+  try {
+    optimizedFile = await compressImageToWebp(file, 1600, 0.85);
+  } catch {
+    optimizedFile = file;
+  }
+
+  try {
+    const formData = new FormData();
+    formData.append('file', optimizedFile);
+    formData.append('folder', folder);
+
+    const res = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await res.json();
+    if (data?.success && data?.data?.url) {
+      return data.data.url;
+    }
+
+    console.warn('R2 upload failed or unconfigured, falling back to Supabase Storage:', data?.error);
+    return await uploadToSupabase(optimizedFile, folder);
+  } catch (err) {
+    console.warn('R2 network upload error, falling back to Supabase Storage:', err);
+    return await uploadToSupabase(optimizedFile, folder);
+  }
 }
+
+/**
+ * Unified media upload function.
+ * Routes to Cloudflare R2 ('r2') or Supabase ('supabase').
+ */
+export async function uploadMedia(
+  file: File,
+  target: 'r2' | 'supabase' = 'r2',
+  folder: string = 'uploads'
+): Promise<string> {
+  if (target === 'r2') {
+    return uploadToR2(file, folder);
+  }
+  return uploadToSupabase(file, folder);
+}
+
+/**
+ * Backwards-compatible alias for uploadToR2.
+ */
+export const uploadImage = uploadToR2;
+

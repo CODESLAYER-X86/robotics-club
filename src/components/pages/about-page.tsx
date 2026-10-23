@@ -524,7 +524,7 @@ export function AboutPage() {
             LEADERSHIP & ADVISORS
           </Badge>
           <h2 className="text-2xl sm:text-3xl font-black font-mono text-white">
-            MEET THE COMMITTEE & FACULTY ADVISORS
+            MEET THE VANGUARDS & FACULTY ADVISORS
           </h2>
           <p className="text-xs sm:text-sm text-gray-400 max-w-xl mx-auto">
             Discover the faculty patrons, advisors, and executive student board steering the DIU Robotics Club.
@@ -533,7 +533,7 @@ export function AboutPage() {
             onClick={() => setCurrentView('committee')}
             className="bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs px-6 h-10 shadow-lg shadow-blue-500/20"
           >
-            View Executive Committee Directory
+            View Vanguards Directory
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
