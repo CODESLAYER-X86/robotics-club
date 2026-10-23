@@ -53,7 +53,7 @@ function getInitialView(): AppView {
     if (urlParams.get("event")) {
       return "event-detail";
     }
-    const viewFromStorage = localStorage.getItem("csc_current_view");
+    const viewFromStorage = localStorage.getItem("diurc_current_view") || localStorage.getItem("csc_current_view");
     if (isValidAppView(viewFromStorage)) {
       return viewFromStorage;
     }
@@ -69,7 +69,7 @@ function getInitialEventId(): string | null {
     if (idFromUrl) {
       return idFromUrl;
     }
-    return localStorage.getItem("csc_selected_event_id");
+    return localStorage.getItem("diurc_selected_event_id") || localStorage.getItem("csc_selected_event_id");
   } catch {
     return null;
   }
@@ -81,7 +81,7 @@ function getInitialEventId(): string | null {
     if (idFromUrl) {
       return idFromUrl;
     }
-    return localStorage.getItem("csc_selected_member_id");
+    return localStorage.getItem("diurc_selected_member_id") || localStorage.getItem("csc_selected_member_id");
   } catch {
     return null;
   }
@@ -162,10 +162,11 @@ export const useAppStore = create<AppState>((set, get) => ({
     let targetView: AppView = "dashboard";
     if (typeof window !== "undefined") {
       try {
+        localStorage.setItem("diurc_logged_in", "true");
         localStorage.setItem("csc_logged_in", "true");
         const urlParams = new URLSearchParams(window.location.search);
         const viewFromUrl = urlParams.get("view");
-        const viewFromStorage = localStorage.getItem("csc_current_view");
+        const viewFromStorage = localStorage.getItem("diurc_current_view") || localStorage.getItem("csc_current_view");
         const requested = viewFromUrl || viewFromStorage;
         if (
           isValidAppView(requested) &&
@@ -186,8 +187,11 @@ export const useAppStore = create<AppState>((set, get) => ({
   logout: () => {
     if (typeof window !== "undefined") {
       try {
+        localStorage.removeItem("diurc_logged_in");
         localStorage.removeItem("csc_logged_in");
+        localStorage.removeItem("diurc_current_view");
         localStorage.removeItem("csc_current_view");
+        localStorage.removeItem("diurc_selected_event_id");
         localStorage.removeItem("csc_selected_event_id");
         const url = new URL(window.location.href);
         url.searchParams.delete("view");
@@ -211,7 +215,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   setCurrentView: (view, options) => {
     if (typeof window !== "undefined") {
       try {
-        localStorage.setItem("csc_current_view", view);
+        localStorage.setItem("diurc_current_view", view);
         const url = new URL(window.location.href);
         if (view === "landing") {
           url.searchParams.delete("view");
@@ -220,7 +224,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         }
 
         if (view === "event-detail") {
-          const evId = get().selectedEventId || localStorage.getItem("csc_selected_event_id");
+          const evId = get().selectedEventId || localStorage.getItem("diurc_selected_event_id") || localStorage.getItem("csc_selected_event_id");
           if (evId) {
             url.searchParams.set("id", evId);
           }
@@ -247,13 +251,14 @@ export const useAppStore = create<AppState>((set, get) => ({
     if (typeof window !== "undefined") {
       try {
         if (id) {
-          localStorage.setItem("csc_selected_event_id", id);
+          localStorage.setItem("diurc_selected_event_id", id);
           const url = new URL(window.location.href);
           if (url.searchParams.get("view") === "event-detail") {
             url.searchParams.set("id", id);
             window.history.replaceState(window.history.state, "", url.pathname + url.search);
           }
         } else {
+          localStorage.removeItem("diurc_selected_event_id");
           localStorage.removeItem("csc_selected_event_id");
           const url = new URL(window.location.href);
           url.searchParams.delete("id");
@@ -270,11 +275,12 @@ export const useAppStore = create<AppState>((set, get) => ({
     if (typeof window !== "undefined") {
       try {
         if (id) {
-          localStorage.setItem("csc_selected_member_id", id);
+          localStorage.setItem("diurc_selected_member_id", id);
           const url = new URL(window.location.href);
           url.searchParams.set("memberId", id);
           window.history.replaceState(window.history.state, "", url.pathname + url.search);
         } else {
+          localStorage.removeItem("diurc_selected_member_id");
           localStorage.removeItem("csc_selected_member_id");
           const url = new URL(window.location.href);
           url.searchParams.delete("memberId");

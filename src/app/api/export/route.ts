@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
         });
 
         const baseUrl =
-          process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || "https://cybersecdiu.club";
+          process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || "https://diurobotics.vercel.app";
 
         const headers = [
           "Name",

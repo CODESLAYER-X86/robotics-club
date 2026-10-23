@@ -942,7 +942,7 @@ function CommitteePageContent() {
         )}
       </section>
 
-      {/* ── Cyber Glowing Section Divider ── */}
+      {/* ── Robotics Glowing Section Divider ── */}
       <div className="relative py-6">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-white/10" />

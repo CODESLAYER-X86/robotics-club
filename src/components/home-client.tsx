@@ -52,7 +52,7 @@ export function HomeClient() {
       window.history.replaceState({}, '', url.pathname + (url.search ? url.search : ''));
     }
 
-    const wasLoggedIn = typeof window !== 'undefined' && localStorage.getItem('csc_logged_in') === 'true';
+    const wasLoggedIn = typeof window !== 'undefined' && (localStorage.getItem('diurc_logged_in') === 'true' || localStorage.getItem('csc_logged_in') === 'true');
 
     // Skip verification fetch if user is not flagged as logged in
     if (!wasLoggedIn && !isGoogleAuthRedirect) {
@@ -65,13 +65,19 @@ export function HomeClient() {
         if (data.success && data.data?.user) {
           login(data.data.user);
         } else {
-          if (typeof window !== 'undefined') localStorage.removeItem('csc_logged_in');
+          if (typeof window !== 'undefined') {
+            localStorage.removeItem('diurc_logged_in');
+            localStorage.removeItem('csc_logged_in');
+          }
           if (isGoogleAuthRedirect) setCurrentView('login', { replace: true });
         }
         setIsAuthenticating(false);
       })
       .catch(() => {
-        if (typeof window !== 'undefined') localStorage.removeItem('csc_logged_in');
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('diurc_logged_in');
+          localStorage.removeItem('csc_logged_in');
+        }
         if (isGoogleAuthRedirect) setCurrentView('login', { replace: true });
         setIsAuthenticating(false);
       });

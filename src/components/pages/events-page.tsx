@@ -113,12 +113,12 @@ export function EventsPage() {
         <div className="absolute -left-8 -bottom-8 h-24 w-24 rounded-full bg-cyan-500/10 blur-3xl" />
         <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 border border-emerald-500/20">
-              <Calendar className="h-6 w-6 text-emerald-400" />
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-500/20 border border-blue-500/30">
+              <Calendar className="h-6 w-6 text-blue-400" />
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-white">Events</h1>
-              <p className="text-xs sm:text-sm text-gray-400">Discover and join cybersecurity events</p>
+              <p className="text-xs sm:text-sm text-gray-400">Discover and join robotics competitions, workshops & hackathons</p>
             </div>
           </div>
           {canCreate && (
@@ -126,7 +126,7 @@ export function EventsPage() {
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="flex-1 sm:flex-initial">
                 <Button
                   variant="outline"
-                  className="w-full sm:w-auto border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/10 justify-center"
+                  className="w-full sm:w-auto border-blue-500/30 text-blue-400 hover:bg-blue-500/10 justify-center"
                   disabled={exporting}
                   onClick={() => {
                     setExporting(true);

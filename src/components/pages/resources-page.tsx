@@ -6,11 +6,10 @@ import {
   BookOpen,
   Compass,
   ExternalLink,
-  Shield,
+  Bot,
   Layers,
   Terminal,
   Cpu,
-  Lock,
   Globe2,
   Binary,
   Flame,
@@ -18,12 +17,15 @@ import {
   Sparkles,
   Search,
   CheckCircle2,
-  Flag,
+  Trophy,
   Radio,
   FileText,
   Code2,
   Wrench,
   GraduationCap,
+  Gauge,
+  Sliders,
+  Plane,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -36,125 +38,125 @@ export function ResourcesPage() {
   const [activeTab, setActiveTab] = useState<ResourceCategory>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // 1. Roadmaps Data
+  // 1. Robotics Roadmaps Data
   const roadmaps = [
     {
-      id: 'roadmap-fundamentals',
-      title: 'Zero to Hero: Cybersecurity Fundamentals',
+      id: 'roadmap-embedded',
+      title: 'Track 1: Embedded Systems & Microcontroller Fundamentals',
       level: 'Beginner',
-      badgeColor: 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10',
+      badgeColor: 'border-blue-500/30 text-blue-400 bg-blue-500/10',
       description:
-        'The foundational learning journey for students starting from absolute scratch. Builds the essential computer science base before moving into offensive or defensive specializations.',
+        'The foundational hardware and firmware journey for new robotics recruits. Covers basic electronics, microcontroller architectures, sensor interfacing, and actuator controls.',
       steps: [
         {
           stage: 'Phase 1',
-          name: 'Computer Networking & Protocols',
-          topics: ['TCP/IP vs OSI Model', 'DNS, DHCP, ARP, ICMP', 'HTTP/HTTPS, WebSockets, TLS Handshake', 'Subnetting & CIDR notation'],
+          name: 'Circuit Theory & Hardware Fundamentals',
+          topics: ['Ohm\'s Law & Power Dissipation', 'Multimeter diagnostics & continuity testing', 'Resistors, Capacitors, Diodes & Transistors', 'Breadboard prototyping & soldering safety'],
         },
         {
           stage: 'Phase 2',
-          name: 'Linux & Terminal Mastery',
-          topics: ['Linux File System Hierarchy', 'Permissions (chmod/chown) & SUID', 'Bash Scripting & Automation', 'Process management & SSH tunnels'],
+          name: 'Microcontroller Programming (C / C++)',
+          topics: ['Arduino & AVR Architecture', 'Digital I/O & Analog ADC Readings', 'PWM Speed Control & Hardware Timers', 'Communication Protocols: UART, I2C, SPI'],
         },
         {
           stage: 'Phase 3',
-          name: 'Security & Cryptography Basics',
-          topics: ['Symmetric vs Asymmetric Ciphers (AES/RSA)', 'Hashing Algorithms (SHA-256) & Salt', 'Public Key Infrastructure (PKI)', 'Authentication & Authorization fundamentals'],
+          name: 'Actuators, Drivers & Motor Dynamics',
+          topics: ['Brushed DC Motors & Gearboxes', 'H-Bridge Drivers (L298N, TB6612FNG, VNH5019)', 'Servo Motor PWM Angle Control', 'Stepper Motors & A4988 Drivers'],
         },
         {
           stage: 'Phase 4',
-          name: 'Scripting with Python for Security',
-          topics: ['Sockets programming', 'Port scanning scripts', 'HTTP request automation with requests', 'Automating log parsing'],
+          name: 'Power Architecture & Battery Management',
+          topics: ['LiPo Battery C-Ratings & Care (2S/3S/4S)', 'Buck/Boost DC-DC Voltage Regulators', 'Current Draw Calculation & Heat Dissipation', 'Optocoupler Isolation & Flyback Diodes'],
         },
       ],
     },
     {
-      id: 'roadmap-web-pentesting',
-      title: 'Offensive Web Application Penetration Testing',
+      id: 'roadmap-lfr',
+      title: 'Track 2: Competitive Line Follower Robot (LFR) Engineering',
       level: 'Intermediate',
       badgeColor: 'border-cyan-500/30 text-cyan-400 bg-cyan-500/10',
       description:
-        'A comprehensive path to becoming a Web Pentester and Bug Bounty Hunter. Covers the full OWASP Top 10 vulnerabilities, API security, and exploitation workflows.',
+        'A battle-tested curriculum for engineering championship Line Follower Robots. Master analog/digital optical sensor arrays, high-speed PID control, and dynamic braking.',
       steps: [
         {
           stage: 'Phase 1',
-          name: 'Web Architecture & Proxy Setup',
-          topics: ['Burp Suite Community / Pro Setup', 'Browser DevTools deep inspection', 'Interception, Repeater, & Intruder', 'Understanding CORS, CSP, & Cookies'],
+          name: 'Optical Sensor Array Calibration',
+          topics: ['QTR-8A / QTR-8RC Sensor Calibration', 'Ambient light noise filtration', 'Analog weighted-average line position math', 'Digital multiplexing & ADC sampling speed'],
         },
         {
           stage: 'Phase 2',
-          name: 'OWASP Top 10 In-Depth',
-          topics: ['SQL Injection (Union, Blind, Time-based)', 'Cross-Site Scripting (Reflected, Stored, DOM)', 'Server-Side Request Forgery (SSRF)', 'Insecure Direct Object Reference (IDOR)'],
+          name: 'Discrete PID Steering Control',
+          topics: ['Proportional (Kp) Response Tuning', 'Derivative (Kd) Oscillation Damping', 'Integral (Ki) Steady-State Correction', 'Microcontroller Loop Rate Optimization (1000Hz+)'],
         },
         {
           stage: 'Phase 3',
-          name: 'Authentication & API Pentesting',
-          topics: ['JWT Token Tampering & None Algorithm', 'OAuth2 Implementation Flaws', 'GraphQL Introspection & Injection', 'REST API Rate-Limiting & Mass Assignment'],
+          name: 'Chassis Kinematics & High-RPM Motors',
+          topics: ['Low Center-of-Gravity Chassis Balance', 'Silicon Tire Friction & Traction Dynamics', 'High-RPM Micro Metal Coreless Motors', 'Magnetic Downforce on Steel Tracks'],
         },
         {
           stage: 'Phase 4',
-          name: 'Methodology & Reporting',
-          topics: ['Reconnaissance (Subfinder, Amass, httpx)', 'Vulnerability validation & CVSS Scoring', 'Writing professional pentest executive reports', 'Responsible Disclosure & HackerOne/Bugcrowd'],
+          name: 'Track Arena Tactics & Obstacle Handling',
+          topics: ['90-Degree Acute Hairpin Turns', 'Loop, Cross & Grid Intersection Detection', 'Breakline Jump Acceleration', 'Dynamic Motor Reverse Counter-Braking'],
         },
       ],
     },
     {
-      id: 'roadmap-soc-analyst',
-      title: 'SOC Analyst & Defensive Operations (Blue Team)',
+      id: 'roadmap-soccer-combat',
+      title: 'Track 3: Robo Soccer & Combat Robotics',
       level: 'Intermediate to Advanced',
       badgeColor: 'border-amber-500/30 text-amber-400 bg-amber-500/10',
       description:
-        'The operational blueprint for aspiring SOC Analysts, Threat Hunters, and Incident Responders. Focuses on telemetry monitoring, forensics, and intrusion analysis.',
+        'Tactical engineering for competitive multi-robot sports and heavy combat arenas. Focuses on omni-directional kinematics, high-torque mechanisms, and wireless RF control.',
       steps: [
         {
           stage: 'Phase 1',
-          name: 'Network Traffic & Packet Analysis',
-          topics: ['Wireshark deep packet inspection (.pcap)', 'Detecting malicious C2 beaconing', 'Analyzing DNS exfiltration', 'Zeek / Snort intrusion detection basics'],
+          name: 'Omni-Directional Drive Kinematics',
+          topics: ['3-Wheel & 4-Wheel Kiwi Drive Vector Math', 'Mecanum Wheel Trigonometric Translation', 'Independent Motor Velocity Decoupling', 'High-Torque Planetary Planetary Gearmotors'],
         },
         {
           stage: 'Phase 2',
-          name: 'Endpoint Telemetry & Windows Internals',
-          topics: ['Windows Event Logs (Sysmon / Event IDs)', 'Process injection detection', 'Registry persistence analysis', 'Linux auditd & auth.log forensics'],
+          name: 'Low-Latency Wireless RF Telemetry',
+          topics: ['ESP32 ESP-NOW Peer-to-Peer Protocol', '2.4GHz NRF24L01+ with PA/LNA Amplification', 'Failsafe Watchdog & Packet Loss Handling', 'Custom Dual-Joystick Ergonomic Transmitters'],
         },
         {
           stage: 'Phase 3',
-          name: 'SIEM Operations & Incident Triage',
-          topics: ['Splunk Search Processing Language (SPL)', 'ELK Stack log aggregation', 'Alert correlation & false-positive triage', 'MITRE ATT&CK Framework mapping'],
+          name: 'Kicker & Dribbler Ball Manipulation',
+          topics: ['High-RPM Dribbler Rollers (Silicon Coated)', 'Spring-Loaded & Solenoid Pulse Kickers', 'Pneumatic Actuator Valves & CO2 Tanks', 'Flywheel Ball Launching Velocity Control'],
         },
         {
           stage: 'Phase 4',
-          name: 'Digital Forensics & Incident Response (DFIR)',
-          topics: ['Volatility memory dump analysis', 'Autopsy disk image investigation', 'Timeline creation & root-cause analysis', 'Incident containment & remediation'],
+          name: 'Mechanical Armor & Weapon Systems',
+          topics: ['CNC 6061 Aluminum & Polycarbonate Armor', 'Brushless Outrunner Weapon Motors & ESCs', 'Bearing Load Ratings & Shaft Couplers', 'Arena Impact Shock Absorption'],
         },
       ],
     },
     {
-      id: 'roadmap-ctf-reversing',
-      title: 'CTF Player & Binary Reverse Engineering',
+      id: 'roadmap-ros-vision',
+      title: 'Track 4: Autonomous Systems, ROS 2 & Computer Vision',
       level: 'Advanced',
-      badgeColor: 'border-red-500/30 text-red-400 bg-red-500/10',
+      badgeColor: 'border-blue-500/30 text-blue-300 bg-blue-500/10',
       description:
-        'Designed for competitive Capture The Flag (CTF) players and malware researchers exploring binary disassembly, memory corruption, and low-level software vulnerabilities.',
+        'Designed for engineers building intelligent autonomous rovers, SLAM navigation systems, computer vision tracking, and autonomous aerial drones.',
       steps: [
         {
           stage: 'Phase 1',
-          name: 'Assembly & Binary Internals',
-          topics: ['x86 and x86_64 Assembly Architecture', 'Registers, Stack, and Heap structure', 'ELF and PE binary headers', 'Calling conventions & function prologues/epilogues'],
+          name: 'Linux Environment & ROS 2 Architecture',
+          topics: ['Ubuntu Linux for Robotics (Noble / Jammy)', 'ROS 2 Nodes, Topics, Services & Actions', 'URDF & Xacro Robot Kinematic Modeling', 'RViz 2 Visualization & Gazebo Simulation'],
         },
         {
           stage: 'Phase 2',
-          name: 'Static & Dynamic Disassembly',
-          topics: ['Ghidra decompiler workflows', 'IDA Free & Binary Ninja usage', 'Dynamic debugging with GDB & GEF / pwndbg', 'Setting breakpoints & memory inspection'],
+          name: 'Computer Vision with OpenCV',
+          topics: ['HSV Color Space Segmentation & Filtering', 'Contour Detection & Real-Time Ball Tracking', 'AprilTag & ArUco Marker Pose Estimation', 'Stereo Depth Cameras (Intel RealSense / OAK-D)'],
         },
         {
           stage: 'Phase 3',
-          name: 'Binary Exploitation (PWN)',
-          topics: ['Stack-based Buffer Overflows', 'Overwriting Return Addresses (EIP/RIP)', 'Bypassing Protections (NX, ASLR, Canaries)', 'Return-Oriented Programming (ROP chains)'],
+          name: '2D/3D LiDAR Mapping & SLAM',
+          topics: ['LiDAR Point Cloud Processing', 'Cartographer & Slam-Toolbox 2D Mapping', 'Nav2 Path Planning & Costmaps', 'AMCL Probabilistic Localization'],
         },
         {
           stage: 'Phase 4',
-          name: 'Competitive CTF Strategy',
-          topics: ['Jeopardy challenge prioritization', 'Pwntools Python automation', 'CyberChef complex transformations', 'Team communication & Flag management'],
+          name: 'Autonomous Aerial Drones & UAVs',
+          topics: ['Quadcopter Flight Controller Kinematics', 'Betaflight & ArduPilot Configuration', 'Optical Flow & Barometric Altitude Hold', 'Autonomous GPS Waypoint Mission Planning'],
         },
       ],
     },
@@ -163,175 +165,175 @@ export function ResourcesPage() {
   // 2. Free Learning Platforms Data
   const freePlatforms = [
     {
-      name: 'PortSwigger Web Security Academy',
-      category: 'Web Security Labs',
+      name: 'Arduino Project Hub & Reference Docs',
+      category: 'Microcontroller Tutorials',
       type: 'FREE',
-      url: 'https://portswigger.net/web-security',
-      description: 'The industry-standard interactive training platform created by the makers of Burp Suite. Covers SQLi, XSS, SSRF, OAuth, and API security with interactive labs.',
-      tags: ['Interactive Labs', 'OWASP Top 10', 'Burp Suite', 'Certified Badges'],
+      url: 'https://projecthub.arduino.cc/',
+      description: 'The premier open-source database of wiring diagrams, code libraries, and real-world embedded sensor interfacing walkthroughs.',
+      tags: ['Schematics', 'Arduino C++', 'Sensors', 'Beginner Friendly'],
     },
     {
-      name: 'OverTheWire Wargames',
-      category: 'Linux & Web Wargames',
+      name: 'ROS 2 Official Documentation',
+      category: 'Robotics Framework',
       type: 'FREE',
-      url: 'https://overthewire.org/wargames/',
-      description: 'Legendary hands-on SSH wargames (Bandit, Natas, Leviathan) designed to teach Linux terminal mechanics, privilege escalation, and basic web exploitation step-by-step.',
-      tags: ['Linux CLI', 'SSH Wargames', 'Beginner Friendly', 'Problem Solving'],
+      url: 'https://docs.ros.org/',
+      description: 'Comprehensive documentation and guided tutorials for ROS 2 (Humble / Iron / Jazzy), covering publishers, subscribers, and navigation stacks.',
+      tags: ['ROS 2', 'C++ / Python', 'Nav2', 'Simulation'],
     },
     {
-      name: 'PicoCTF by Carnegie Mellon',
-      category: 'CTF Training Platform',
+      name: 'Webots Open-Source Robot Simulator',
+      category: '3D Simulation',
       type: 'FREE',
-      url: 'https://picoctf.org/',
-      description: 'Free computer security education program with original gamified CTF challenges in Cryptography, Web, Forensics, and Binary Exploitation for all skill levels.',
-      tags: ['Gamified CTF', 'Forensics', 'Crypto', 'Binary PWN'],
+      url: 'https://cyberbotics.com/',
+      description: 'Industry-standard free 3D robot simulation environment. Test line followers, soccer bots, and differential rovers virtually before physical fabrication.',
+      tags: ['3D Simulator', 'Physics Engine', 'C++ / Python', 'Free & Open'],
     },
     {
-      name: 'CryptoHack',
-      category: 'Cryptography Puzzles',
+      name: 'Autodesk Tinkercad Circuits',
+      category: 'Interactive Circuit Simulator',
       type: 'FREE',
-      url: 'https://cryptohack.org/',
-      description: 'A fun, interactive platform for learning modern cryptography by breaking RSA, Diffie-Hellman, Elliptic Curves, and symmetric block ciphers.',
-      tags: ['Applied Crypto', 'Python', 'RSA / ECC', 'Mathematical Puzzles'],
+      url: 'https://www.tinkercad.com/circuits',
+      description: 'Browser-based virtual electronics workbench. Simulate Arduino sketches, motor drivers, and complex sensor circuits without damaging hardware.',
+      tags: ['Browser Simulator', 'Virtual Arduino', 'Oscilloscope', 'Interactive'],
     },
     {
-      name: 'VulnHub',
-      category: 'Vulnerable Virtual Machines',
+      name: 'All About Circuits Education Hub',
+      category: 'Electronics Theory',
       type: 'FREE',
-      url: 'https://www.vulnhub.com/',
-      description: 'Extensive catalog of downloadable vulnerable virtual machines (VMs) allowing offline hands-on network penetration testing and privilege escalation practice.',
-      tags: ['Offline Labs', 'VMware / VirtualBox', 'Boot-to-Root', 'Privilege Escalation'],
+      url: 'https://www.allaboutcircuits.com/education/',
+      description: 'Peer-reviewed, in-depth textbooks on analog circuits, digital logic gates, operational amplifiers, and microcontroller hardware engineering.',
+      tags: ['Circuit Theory', 'Semiconductors', 'Textbooks', 'Calculators'],
     },
     {
-      name: 'Cybrary Free Tier',
-      category: 'Video Courses',
+      name: 'ArduPilot & Betaflight Documentation',
+      category: 'UAV & Autonomous Drones',
       type: 'FREE',
-      url: 'https://www.cybrary.it/',
-      description: 'Foundational video courses covering CompTIA Security+, Network+, and introductory SOC analyst roles with guided instruction.',
-      tags: ['Video Courses', 'Cert Preparation', 'Beginner Friendly'],
+      url: 'https://ardupilot.org/',
+      description: 'The world\'s most capable open-source autopilot software documentation for autonomous multirotors, fixed-wing drones, and ground rovers.',
+      tags: ['Drone Firmware', 'GPS Waypoints', 'Telemetry', 'PID Flight Control'],
     },
   ];
 
   // 3. Premium / Pro Platforms Data
   const proPlatforms = [
     {
-      name: 'TryHackMe (THM)',
-      category: 'Hands-on Browser Labs',
-      type: 'FREEMIUM / VIP',
-      url: 'https://tryhackme.com/',
-      description: 'Gamified platform with structured learning paths (Complete Beginner, Web Fundamentals, Jr Penetration Tester, SOC Level 1) with dedicated cloud attack machines.',
-      tags: ['Cloud VM', 'Structured Paths', 'SOC Level 1', 'Jr Pentester'],
+      name: 'Coursera: Modern Robotics Specialization',
+      category: 'University Certification',
+      type: 'PRO / AUDITABLE',
+      url: 'https://www.coursera.org/specializations/modernrobotics',
+      description: 'Northwestern University\'s rigorous curriculum on robot kinematics, trajectory generation, dynamic modeling, and motion planning algorithms.',
+      tags: ['Kinematics', 'Trajectory Planning', 'Northwestern University', 'Certified'],
     },
     {
-      name: 'Hack The Box (HTB)',
-      category: 'Advanced Penetration Testing',
-      type: 'PRO / VIP',
-      url: 'https://www.hackthebox.com/',
-      description: 'The global benchmark for realistic penetration testing labs, active machine challenges, and enterprise Pro Labs (Offshore, Dante, APT simulation).',
-      tags: ['Active Machines', 'Pro Labs', 'Enterprise Scenarios', 'Hard Challenges'],
-    },
-    {
-      name: 'OffSec (OSCP / PEN-200)',
-      category: 'Industry Certification',
+      name: 'edX / MITx: Autonomous Mobile Robots',
+      category: 'Autonomous Systems',
       type: 'PROFESSIONAL',
-      url: 'https://www.offsec.com/',
-      description: 'The gold-standard rigorous 24-hour hands-on penetration testing certification recognized by cybersecurity employers globally.',
-      tags: ['Gold Standard', 'PEN-200', '24hr Hands-on Exam', 'Enterprise Recognized'],
+      url: 'https://www.edx.org/',
+      description: 'Advanced graduate-level curriculum covering state estimation, Kalman filters, particle filters, visual odometry, and graph SLAM.',
+      tags: ['State Estimation', 'Kalman Filters', 'SLAM', 'Academic Rigor'],
     },
     {
-      name: 'TCM Security (The Cyber Mentor)',
-      category: 'Practical Pentesting Courses',
-      type: 'AFFORDABLE PRO',
-      url: 'https://tcm-sec.com/',
-      description: 'Highly acclaimed practical courses including Practical Ethical Hacking (PEH), OSINT, Linux Privilege Escalation, and the PNPT certification.',
-      tags: ['Real-World Focus', 'PNPT Certification', 'OSINT', 'Affordable'],
+      name: 'Udacity: Robotics Software Engineer Nanodegree',
+      category: 'Industry Nanodegree',
+      type: 'INDUSTRY CERT',
+      url: 'https://www.udacity.com/course/robotics-software-engineer--nd209',
+      description: 'Hands-on project-based degree building production-ready localization, mapping, path planning, and manipulator pick-and-place systems.',
+      tags: ['ROS 2 Projects', 'Gazebo', 'Path Planning', 'Career Ready'],
     },
     {
-      name: 'Blue Team Labs Online (BTLO)',
-      category: 'Defensive Operations & SOC',
-      type: 'FREEMIUM / PRO',
-      url: 'https://blueteamlabs.online/',
-      description: 'Gamified defensive platform tackling incident response, digital forensics, threat hunting, and reverse engineering scenarios using real artifacts.',
-      tags: ['Blue Team', 'Incident Response', 'DFIR Labs', 'Artifact Analysis'],
+      name: 'Autodesk Certified Associate in CAD (Fusion 360)',
+      category: 'Mechanical CAD Certification',
+      type: 'INDUSTRY CERT',
+      url: 'https://www.autodesk.com/certification',
+      description: 'Global benchmark credential verifying mechanical design, parametric 3D assembly, and generative design for robotics chassis engineering.',
+      tags: ['3D CAD', 'Parametric Modeling', 'CNC & 3D Printing', 'Global Credential'],
     },
     {
-      name: 'INE Security (eJPT / eWPT)',
-      category: 'Practical Hands-on Certs',
-      type: 'SUBSCRIPTION',
-      url: 'https://ine.com/',
-      description: 'Hands-on training curriculum leading to the Junior Penetration Tester (eJPT) and Web Penetration Tester (eWPT) credentials with dynamic lab environments.',
-      tags: ['eJPT', 'eWPT', 'Dynamic Labs', 'Browser-based'],
+      name: 'Altium Academy Professional PCB Design',
+      category: 'Hardware & PCB Masterclasses',
+      type: 'PRO HARDWARE',
+      url: 'https://www.altium.com/altium-academy',
+      description: 'In-depth engineering courses on multi-layer PCB design, high-frequency signal integrity, power routing for high-current motor drivers, and EMI mitigation.',
+      tags: ['PCB Layout', 'Signal Integrity', 'Motor Driver Design', 'High Current'],
+    },
+    {
+      name: 'IEEE Robotics and Automation Society (RAS)',
+      category: 'Professional Engineering Society',
+      type: 'PROFESSIONAL',
+      url: 'https://www.ieee-ras.org/',
+      description: 'Access premier international robotics research journals, conferences (ICRA, IROS), competition benchmarks, and global engineering networks.',
+      tags: ['IEEE RAS', 'Research Papers', 'International Standards', 'Conferences'],
     },
   ];
 
   // 4. Recommended Books Data
   const books = [
     {
-      title: "The Web Application Hacker's Handbook",
-      author: 'Dafydd Stuttard & Marcus Pinto',
-      category: 'Web Security Bible',
-      edition: '2nd Edition',
+      title: 'Introduction to Autonomous Mobile Robots',
+      author: 'Roland Siegwart, Illah Nourbakhsh & Davide Scaramuzza',
+      category: 'Mobile Kinematics',
+      edition: '2nd Edition (MIT Press)',
       description:
-        'The definitive guide to finding and exploiting security flaws in web applications. Teaches core methodology, authentication bypasses, and input validation vulnerabilities from first principles.',
-      targetAudience: 'Web Pentesters, AppSec Engineers, Bug Bounty Hunters',
+        'The definitive university textbook for mobile robot geometry, differential drive kinematics, wheel slip dynamics, optical sensor models, and autonomous navigation.',
+      targetAudience: 'LFR Engineers, Mobile Rover Developers, Mechatronics Students',
     },
     {
-      title: 'Practical Malware Analysis',
-      author: 'Michael Sikorski & Andrew Honig',
-      category: 'Reverse Engineering',
-      edition: 'Standard Edition',
+      title: 'Probabilistic Robotics',
+      author: 'Sebastian Thrun, Wolfram Burgard & Dieter Fox',
+      category: 'SLAM & Sensor Fusion',
+      edition: 'MIT Press Edition',
       description:
-        'The hands-on handbook to dissecting malicious software. Covers static analysis, dynamic analysis, x86 disassembly, IDA Pro workflows, and malware evasion techniques.',
-      targetAudience: 'Malware Researchers, Reverse Engineers, DFIR Specialists',
+        'The foundational bible for uncertain sensor environments. Covers recursive state estimation, Extended Kalman Filters (EKF), Particle Filters, and FastSLAM.',
+      targetAudience: 'Autonomous System Developers, Vision Engineers, Advanced Researchers',
     },
     {
-      title: 'Linux Basics for Hackers',
-      author: 'OccupyTheWeb',
-      category: 'Foundations',
-      edition: '1st Edition',
+      title: 'Making Things Move: DIY Mechanisms for Inventors',
+      author: 'Dustyn Roberts',
+      category: 'Mechanical Engineering',
+      edition: '1st Edition (McGraw-Hill)',
       description:
-        'Master the Linux command line, networking fundamentals, Bash scripting, and package configuration specifically tailored for penetration testers and ethical hackers.',
-      targetAudience: 'Beginners, Cyber Cadets, Linux Enthusiasts',
+        'Practical mechanics for bot builders: torque and RPM calculations, center of gravity, friction coefficients, bearings, gear ratios, and material selection.',
+      targetAudience: 'Combat Bot Builders, Robo Soccer Mechanics, Hardware Fabricators',
     },
     {
-      title: 'The Hacker Playbook 3: Red Team Edition',
-      author: 'Peter Kim',
-      category: 'Red Teaming',
-      edition: '3rd Edition',
+      title: 'Practical Electronics for Inventors',
+      author: 'Paul Scherz & Simon Monk',
+      category: 'Hardware Design',
+      edition: '4th Edition',
       description:
-        'Practical red team tactics, external reconnaissance, internal pivoting, Active Directory exploitation, and modern evasion techniques used by professional offensive security consultants.',
-      targetAudience: 'Red Teamers, Advanced Pentesters',
+        'The most hands-on, practical field guide to analog and digital electronics, MOSFET switches, sensor datasheets, battery chemistries, and power regulators.',
+      targetAudience: 'Hardware Enthusiasts, Circuit Designers, Embedded Engineers',
     },
     {
-      title: 'Blue Team Handbook: Incident Response Edition',
-      author: 'Don Murdoch',
-      category: 'Defensive Operations',
-      edition: 'Condensed Field Guide',
+      title: 'Feedback Control of Dynamic Systems',
+      author: 'Gene Franklin, J. David Powell & Abbas Emami-Naeini',
+      category: 'PID Control Theory',
+      edition: '8th Edition',
       description:
-        'A concise, battle-tested field guide for SOC analysts and incident responders covering packet analysis, Windows event logs, network forensics, and crisis management.',
-      targetAudience: 'SOC Analysts, Incident Responders, Blue Teamers',
+        'Deep mathematical and intuitive guide to feedback control, root locus, Bode frequency analysis, and discrete PID controller tuning for real-time robotic systems.',
+      targetAudience: 'Control Systems Engineers, LFR Algorithm Tuners',
     },
     {
-      title: 'Applied Cryptography',
-      author: 'Bruce Schneier',
-      category: 'Cryptography',
-      edition: '20th Anniversary Edition',
+      title: 'Robot Operating System (ROS) for Absolute Beginners',
+      author: 'Lentin Joseph',
+      category: 'Software Framework',
+      edition: '2nd Edition (Apress)',
       description:
-        'Comprehensive breakdown of cryptographic protocols, algorithms (DES, AES, RSA), hash functions, and real-world implementation pitfalls written by one of the worlds foremost security experts.',
-      targetAudience: 'Cryptographers, Security Architects, Software Engineers',
+        'A gentle, practical step-by-step walkthrough of writing custom ROS nodes, subscribing to sensor feeds, and controlling simulated robots in Gazebo.',
+      targetAudience: 'Software Developers Transitioning to Robotics, ROS Beginners',
     },
   ];
 
   // 5. Tool Arsenal Data
   const tools = [
-    { name: 'Kali Linux', type: 'Operating System', use: 'Pre-configured penetration testing distribution with 600+ tools.' },
-    { name: 'Burp Suite', type: 'Web Proxy', use: 'Industry-standard proxy for intercepting and manipulating web HTTP traffic.' },
-    { name: 'Wireshark', type: 'Network Forensics', use: 'Deep packet inspection tool for analyzing live and captured network traffic.' },
-    { name: 'Ghidra', type: 'Reverse Engineering', use: 'NSAs free open-source software reverse engineering suite and decompiler.' },
-    { name: 'Nmap', type: 'Network Scanner', use: 'The gold standard for network discovery and vulnerability port scanning.' },
-    { name: 'Metasploit', type: 'Exploitation Framework', use: 'Modular framework for verifying vulnerabilities and deploying payloads.' },
-    { name: 'CyberChef', type: 'Data Swiss Army Knife', use: 'Interactive web app for decoding, hashing, encrypting, and transforming data.' },
-    { name: 'Hashcat', type: 'Password Recovery', use: 'Worlds fastest GPU-accelerated password hash cracking utility.' },
+    { name: 'PlatformIO / VS Code', type: 'Firmware IDE', use: 'Professional C/C++ embedded development environment for STM32, ESP32, and Arduino.' },
+    { name: 'KiCad EDA', type: 'PCB Design', use: 'Open-source schematic capture and multi-layer PCB layout design suite with 3D raytracing.' },
+    { name: 'Autodesk Fusion 360', type: 'Mechanical CAD', use: 'Cloud-based 3D parametric CAD and CAM for designing robot chassis, brackets, and armor.' },
+    { name: 'UltiMaker Cura', type: '3D Print Slicer', use: 'Industry-standard slicer converting 3D robot models into G-code for rapid FDM prototyping.' },
+    { name: 'Betaflight Configurator', type: 'Drone Flight Tool', use: 'Real-time telemetry, motor mapping, and PID rate tuning for quadcopter flight controllers.' },
+    { name: 'Saleae Logic Software', type: 'Signal Analyzer', use: 'Logic analyzer tool for decoding and inspecting high-speed UART, I2C, SPI, and PWM waveforms.' },
+    { name: 'Webots Robot Simulator', type: 'Kinematic Simulator', use: 'Physics-accurate multi-platform simulation engine for testing autonomous differential drive code.' },
+    { name: 'OpenCV Vision Suite', type: 'Computer Vision', use: 'Open-source computer vision library for color tracking, line detection, and AprilTag pose estimation.' },
   ];
 
   // Filter helper
@@ -341,22 +343,22 @@ export function ResourcesPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#040810] text-gray-100 selection:bg-emerald-500 selection:text-black">
+    <div className="relative min-h-screen overflow-hidden bg-[#040810] text-gray-100 selection:bg-blue-600 selection:text-white">
       {/* Background Matrix Grid */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#091a2415_1px,transparent_1px),linear-gradient(to_bottom,#091a2415_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#1d4ed810_1px,transparent_1px),linear-gradient(to_bottom,#1d4ed810_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
       {/* HEADER HERO */}
-      <section className="relative z-10 border-b border-emerald-500/20 bg-slate-950/60 pt-12 pb-16 px-4 sm:px-6 lg:px-8 backdrop-blur-md">
+      <section className="relative z-10 border-b border-blue-500/20 bg-slate-950/60 pt-12 pb-16 px-4 sm:px-6 lg:px-8 backdrop-blur-md">
         <div className="mx-auto max-w-7xl space-y-4 text-center">
-          <Badge variant="outline" className="border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-mono text-xs px-3.5 py-1">
-            <Compass className="mr-1.5 h-3.5 w-3.5 text-emerald-400" />
-            OFFICIAL KNOWLEDGE VAULT
+          <Badge variant="outline" className="border-blue-500/40 bg-blue-500/10 text-blue-300 font-mono text-xs px-3.5 py-1">
+            <Compass className="mr-1.5 h-3.5 w-3.5 text-blue-400" />
+            DIURC KNOWLEDGE VAULT
           </Badge>
           <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl font-mono">
             ROBOTICS & EMBEDDED SYSTEMS RESOURCE HUB
           </h1>
           <p className="text-sm text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Curated roadmaps, free and premium hands-on practice platforms, essential field literature, and engineering tools curated for Dhaka International University members.
+            Curated engineering roadmaps, circuit simulators, kinematics literature, and CAD tools curated for Dhaka International University Robotics Club members.
           </p>
 
           {/* Search Bar */}
@@ -366,8 +368,8 @@ export function ResourcesPage() {
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search roadmaps, books, platforms, tools..."
-                className="border-white/10 bg-slate-900/80 pl-10 text-xs font-mono text-white placeholder:text-gray-500 focus:border-emerald-500/50 h-11"
+                placeholder="Search LFR, Robo Soccer, Arduino, ROS, CAD tools..."
+                className="border-white/10 bg-slate-900/80 pl-10 text-xs font-mono text-white placeholder:text-gray-500 focus:border-blue-500/50 h-11"
               />
             </div>
           </div>
@@ -380,10 +382,10 @@ export function ResourcesPage() {
           {[
             { id: 'ALL', label: 'All Resources' },
             { id: 'ROADMAPS', label: 'Structured Roadmaps' },
-            { id: 'FREE_PLATFORMS', label: 'Free Labs & Wargames' },
+            { id: 'FREE_PLATFORMS', label: 'Simulators & Free Platforms' },
             { id: 'PRO_PLATFORMS', label: 'Pro & Certification Platforms' },
-            { id: 'BOOKS', label: 'Essential Books' },
-            { id: 'TOOLS', label: 'Tool Arsenal' },
+            { id: 'BOOKS', label: 'Essential Literature' },
+            { id: 'TOOLS', label: 'Engineering Tool Arsenal' },
           ].map((tab) => (
             <Button
               key={tab.id}
@@ -392,7 +394,7 @@ export function ResourcesPage() {
               onClick={() => setActiveTab(tab.id as ResourceCategory)}
               className={
                 activeTab === tab.id
-                  ? 'bg-emerald-500 text-slate-950 font-bold hover:bg-emerald-400'
+                  ? 'bg-blue-600 text-white font-bold hover:bg-blue-500'
                   : 'border-white/10 bg-slate-950/60 text-gray-300 hover:bg-white/5'
               }
             >
@@ -408,23 +410,23 @@ export function ResourcesPage() {
           <section className="space-y-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Compass className="h-5 w-5 text-emerald-400" />
-                <h2 className="text-2xl font-bold font-mono text-white">STRUCTURED LEARNING ROADMAPS</h2>
+                <Compass className="h-5 w-5 text-blue-400" />
+                <h2 className="text-2xl font-bold font-mono text-white">STRUCTURED ENGINEERING ROADMAPS</h2>
               </div>
-              <p className="text-xs text-gray-400">Step-by-step milestones to advance your robotics & engineering competence.</p>
+              <p className="text-xs text-gray-400">Step-by-step milestones to advance from circuit basics to national robotics champions.</p>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-2">
               {roadmaps
                 .filter((r) => matchesSearch(r.title + r.description + r.steps.map((s) => s.name + s.topics.join(' ')).join(' ')))
                 .map((roadmap) => (
-                  <Card key={roadmap.id} className="border-emerald-500/20 bg-slate-950/80 backdrop-blur shadow-xl">
+                  <Card key={roadmap.id} className="border-blue-500/20 bg-slate-950/80 backdrop-blur shadow-xl hover:border-blue-500/40 transition-colors">
                     <CardHeader className="border-b border-white/5 pb-4">
                       <div className="flex items-center justify-between gap-2">
                         <Badge variant="outline" className={`font-mono text-[10px] ${roadmap.badgeColor}`}>
                           {roadmap.level}
                         </Badge>
-                        <span className="font-mono text-[11px] text-gray-500">DIURC ROADMAP</span>
+                        <span className="font-mono text-[11px] text-cyan-400">DIURC TRACK</span>
                       </div>
                       <CardTitle className="font-mono text-lg text-white mt-2">{roadmap.title}</CardTitle>
                       <p className="text-xs text-gray-400 font-sans mt-1 leading-relaxed">{roadmap.description}</p>
@@ -434,8 +436,8 @@ export function ResourcesPage() {
                       {roadmap.steps.map((step, idx) => (
                         <div key={idx} className="rounded-lg border border-white/5 bg-slate-900/50 p-3.5 space-y-2">
                           <div className="flex items-center justify-between font-mono text-xs">
-                            <span className="text-emerald-400 font-bold">{step.stage}: {step.name}</span>
-                            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500/60" />
+                            <span className="text-blue-400 font-bold">{step.stage}: {step.name}</span>
+                            <CheckCircle2 className="h-3.5 w-3.5 text-blue-500/60" />
                           </div>
                           <div className="flex flex-wrap gap-1.5">
                             {step.topics.map((topic, tIdx) => (
@@ -453,15 +455,15 @@ export function ResourcesPage() {
           </section>
         )}
 
-        {/* 2. FREE LEARNING PLATFORMS */}
+        {/* 2. FREE LEARNING & SIMULATOR PLATFORMS */}
         {(activeTab === 'ALL' || activeTab === 'FREE_PLATFORMS') && (
           <section className="space-y-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Globe2 className="h-5 w-5 text-cyan-400" />
-                <h2 className="text-2xl font-bold font-mono text-white">FREE LABS & WARGAMES</h2>
+                <h2 className="text-2xl font-bold font-mono text-white">FREE SIMULATORS & INTERACTIVE PLATFORMS</h2>
               </div>
-              <p className="text-xs text-gray-400">100% free interactive platforms for real-world ethical hacking practice.</p>
+              <p className="text-xs text-gray-400">100% free virtual labs, physics simulators, and open-source robotics documentation.</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -471,7 +473,7 @@ export function ResourcesPage() {
                   <Card key={idx} className="border-cyan-500/20 bg-slate-950/80 backdrop-blur hover:border-cyan-500/50 transition-all flex flex-col justify-between">
                     <CardHeader className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 bg-emerald-500/10 font-mono text-[10px]">
+                        <Badge variant="outline" className="border-blue-500/30 text-blue-400 bg-blue-500/10 font-mono text-[10px]">
                           {platform.type}
                         </Badge>
                         <span className="font-mono text-[10px] text-gray-500">{platform.category}</span>
@@ -495,7 +497,7 @@ export function ResourcesPage() {
                         rel="noreferrer noopener"
                         className="inline-flex w-full items-center justify-center rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 font-mono text-xs font-bold text-cyan-300 hover:bg-cyan-500/20 transition-colors gap-1.5"
                       >
-                        Launch Platform <ExternalLink className="h-3.5 w-3.5" />
+                        Launch Resource <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     </CardContent>
                   </Card>
@@ -510,9 +512,9 @@ export function ResourcesPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Award className="h-5 w-5 text-amber-400" />
-                <h2 className="text-2xl font-bold font-mono text-white">PRO LABS & CERTIFICATION PLATFORMS</h2>
+                <h2 className="text-2xl font-bold font-mono text-white">PRO CERTIFICATIONS & ACADEMIC PLATFORMS</h2>
               </div>
-              <p className="text-xs text-gray-400">Industry-recognized professional platforms and training providers.</p>
+              <p className="text-xs text-gray-400">Industry-recognized professional engineering courses, university specializations, and societies.</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -555,31 +557,31 @@ export function ResourcesPage() {
           </section>
         )}
 
-        {/* 4. ESSENTIAL BOOKS & LITERATURE */}
+        {/* 4. ESSENTIAL LITERATURE & TEXTBOOKS */}
         {(activeTab === 'ALL' || activeTab === 'BOOKS') && (
           <section className="space-y-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <BookOpen className="h-5 w-5 text-emerald-400" />
-                <h2 className="text-2xl font-bold font-mono text-white">ESSENTIAL ROBOTICS & TECHNICAL LITERATURE</h2>
+                <BookOpen className="h-5 w-5 text-blue-400" />
+                <h2 className="text-2xl font-bold font-mono text-white">ESSENTIAL ROBOTICS TEXTBOOKS & LITERATURE</h2>
               </div>
-              <p className="text-xs text-gray-400">Timeless textbooks, field handbooks, and operational guides recommended by senior engineers.</p>
+              <p className="text-xs text-gray-400">Authoritative textbooks and engineering handbooks recommended by club advisors.</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {books
                 .filter((b) => matchesSearch(b.title + b.author + b.description + b.category))
                 .map((book, idx) => (
-                  <Card key={idx} className="border-emerald-500/20 bg-slate-950/80 backdrop-blur p-6 space-y-3">
+                  <Card key={idx} className="border-blue-500/20 bg-slate-950/80 backdrop-blur p-6 space-y-3 hover:border-blue-500/40 transition-colors">
                     <div className="flex items-center justify-between text-[10px] font-mono">
-                      <Badge variant="outline" className="border-emerald-500/30 text-emerald-300 bg-emerald-500/10">
+                      <Badge variant="outline" className="border-blue-500/30 text-blue-300 bg-blue-500/10">
                         {book.category}
                       </Badge>
                       <span className="text-gray-500">{book.edition}</span>
                     </div>
 
                     <h3 className="font-mono font-bold text-base text-white">{book.title}</h3>
-                    <p className="font-mono text-xs text-emerald-400">By {book.author}</p>
+                    <p className="font-mono text-xs text-cyan-400">By {book.author}</p>
                     <p className="text-xs text-gray-400 font-sans leading-relaxed">{book.description}</p>
 
                     <div className="border-t border-white/5 pt-3 font-mono text-[10px] text-gray-500">
@@ -597,19 +599,19 @@ export function ResourcesPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Wrench className="h-5 w-5 text-cyan-400" />
-                <h2 className="text-2xl font-bold font-mono text-white">CORE SECURITY ARSENAL</h2>
+                <h2 className="text-2xl font-bold font-mono text-white">ROBOTICS HARDWARE & SOFTWARE ARSENAL</h2>
               </div>
-              <p className="text-xs text-gray-400">Essential software packages and analysis engines every student should configure.</p>
+              <p className="text-xs text-gray-400">Essential CAD packages, firmware compilers, and signal analysis software used at DIURC.</p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {tools
                 .filter((t) => matchesSearch(t.name + t.type + t.use))
                 .map((tool, idx) => (
-                  <div key={idx} className="rounded-xl border border-white/5 bg-slate-950/70 p-4 space-y-2">
+                  <div key={idx} className="rounded-xl border border-white/5 bg-slate-950/70 p-4 space-y-2 hover:border-blue-500/30 transition-colors">
                     <div className="flex items-center justify-between font-mono text-xs">
                       <span className="font-bold text-white">{tool.name}</span>
-                      <Badge variant="outline" className="border-white/10 text-[9px] text-gray-400">{tool.type}</Badge>
+                      <Badge variant="outline" className="border-white/10 text-[9px] text-cyan-400">{tool.type}</Badge>
                     </div>
                     <p className="text-xs text-gray-400 font-sans leading-relaxed">{tool.use}</p>
                   </div>

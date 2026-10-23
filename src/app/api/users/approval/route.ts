@@ -105,7 +105,7 @@ export async function PATCH(request: NextRequest) {
         title: normalizedAction === "APPROVE" ? "Membership Approved" : "Membership Rejected",
         message:
           normalizedAction === "APPROVE"
-            ? "Your membership has been approved! Welcome to the Cyber Security Club."
+            ? "Your membership has been approved! Welcome to the DIU Robotics Club."
             : "Your membership application has been rejected. Please contact an administrator for more information.",
         type: normalizedAction === "APPROVE" ? "SUCCESS" : "WARNING",
       },

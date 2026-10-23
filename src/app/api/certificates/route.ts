@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
 
         // Build certificate data with status determined in-memory (no N+1 queries)
         const certificatesToCreate = missingRegs.map((reg) => {
-          const certificateCode = `CSC-2026-${category}-${uuidv4().split("-")[0].toUpperCase()}`;
+          const certificateCode = `DIURC-2026-${category}-${uuidv4().split("-")[0].toUpperCase()}`;
           const att = attendances.find(a => a.userId === reg.userId);
 
           let initialStatus = "REGISTERED";
@@ -329,7 +329,7 @@ export async function POST(request: NextRequest) {
             },
           });
         } else {
-          const certificateCode = `CSC-2026-MANUAL-${uuidv4().split("-")[0].toUpperCase()}`;
+          const certificateCode = `DIURC-2026-MANUAL-${uuidv4().split("-")[0].toUpperCase()}`;
           certificate = await prisma.certificate.create({
             data: {
               certificateCode,
@@ -432,7 +432,7 @@ export async function POST(request: NextRequest) {
         },
       });
     } else {
-      const certificateCode = `CSC-2026-MANUAL-${uuidv4().split("-")[0].toUpperCase()}`;
+      const certificateCode = `DIURC-2026-MANUAL-${uuidv4().split("-")[0].toUpperCase()}`;
       certificate = await prisma.certificate.create({
         data: {
           certificateCode,

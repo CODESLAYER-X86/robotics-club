@@ -1630,7 +1630,7 @@ export function CertificateAuthorityPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleGlobalSearch()}
-                  placeholder="e.g. CSC-2026-WORKSHOP-XXXX or Member Name..."
+                  placeholder="e.g. DIURC-2026-WORKSHOP-XXXX or Member Name..."
                   className="border-white/10 bg-white/5 text-white placeholder:text-zinc-600 flex-1"
                 />
                 <Button

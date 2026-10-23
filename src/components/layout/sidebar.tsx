@@ -551,7 +551,7 @@ export function Sidebar({ className }: SidebarProps = {}) {
               transition={transitionConfig}
               className="text-[10px] tracking-wider text-gray-600 font-mono"
             >
-              CyberSec v1.0.0
+              DIURC v1.0.0
             </motion.span>
           )}
           <Button

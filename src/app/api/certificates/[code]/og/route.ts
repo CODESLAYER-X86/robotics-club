@@ -88,7 +88,7 @@ async function fetchBase64(url: string | undefined, protocol?: string, host?: st
     const timer = setTimeout(() => controller.abort(), 6000);
     const res = await fetch(parsed.toString(), {
       signal: controller.signal,
-      headers: { 'User-Agent': 'CSC-OG-Generator/1.0', Accept: 'image/*' },
+      headers: { 'User-Agent': 'DIURC-OG-Generator/1.0', Accept: 'image/*' },
     });
     clearTimeout(timer);
 
@@ -182,7 +182,7 @@ export async function GET(
       .replace('{{issue_date}}', dateStr);
 
     // Verify URL & QR Code
-    const host = _request.headers.get("host") || "cybersec.club";
+    const host = _request.headers.get("host") || "diurobotics.vercel.app";
     const protocol = host.includes("localhost") ? "http" : "https";
     const verifyUrl = `${protocol}://${host}/verify/${certCode}`;
     const rawQrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=000000&bgcolor=ffffff&data=${encodeURIComponent(verifyUrl)}`;
@@ -370,7 +370,7 @@ export async function GET(
       return `<text x="${x}" y="${y}" text-anchor="${textAnchor}" font-family="sans-serif" font-size="${fontSize}"${fontWeightAttr} fill="${color}"${letterSpacingAttr}>${escapeXml(rawText)}</text>`;
     };
 
-    const headerTitleHtml = renderSvgText('headerTitle', 'CYBER SECURITY CLUB', {
+    const headerTitleHtml = renderSvgText('headerTitle', 'DIU ROBOTICS CLUB', {
       x: width / 2, y: isLandscape ? 210 : 230, fontSize: 22, color: isLight ? '#0f172a' : '#ffffff', fontWeight: 'bold', letterSpacing: 6
     });
 
@@ -485,7 +485,7 @@ function renderNotFound() {
     <rect width="1200" height="630" fill="#000000"/>
     <text x="600" y="280" text-anchor="middle" font-family="sans-serif" font-size="48" fill="#ef4444">Certificate Not Found</text>
     <text x="600" y="340" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#6b7280">The certificate code is invalid or has been revoked</text>
-    <text x="600" y="420" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#4b5563">Cyber Security Club</text>
+    <text x="600" y="420" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#4b5563">DIU Robotics Club</text>
   </svg>`;
   return new Response(notFoundSvg, {
     headers: {
@@ -501,7 +501,7 @@ function renderNotIssued() {
     <rect x="120" y="100" width="960" height="430" rx="16" fill="#0d1117" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
     <text x="600" y="270" text-anchor="middle" font-family="sans-serif" font-size="44" font-weight="bold" fill="#f59e0b">Certificate Not Issued</text>
     <text x="600" y="330" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#9ca3af">This certificate has not been officially authorized or issued by club leadership.</text>
-    <text x="600" y="420" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4b5563">Cyber Security Club - Official Credentials</text>
+    <text x="600" y="420" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4b5563">DIU Robotics Club - Official Credentials</text>
   </svg>`;
   return new Response(notIssuedSvg, {
     status: 403,

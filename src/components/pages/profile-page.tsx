@@ -586,7 +586,7 @@ export function ProfilePage() {
                     value={form.bio}
                     onChange={(e) => setForm((p) => ({ ...p, bio: e.target.value }))}
                     className="border-white/10 bg-white/5 text-white min-h-[80px] resize-none"
-                    placeholder="Tell us about security interests..."
+                    placeholder="Tell us about your robotics & engineering interests (e.g., LFR, Robo Soccer, IoT, Drones)..."
                   />
                 </div>
               ) : userToShow.bio ? (

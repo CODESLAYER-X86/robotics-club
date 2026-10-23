@@ -1353,7 +1353,7 @@ export function AuditLogsPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-white text-sm">{selectedLog.user?.name || 'System Engine'}</p>
-                    <p className="text-gray-400 text-xs">{selectedLog.user?.email || 'automated@cybersecdiu.club'}</p>
+                    <p className="text-gray-400 text-xs">{selectedLog.user?.email || 'automated@diurobotics.vercel.app'}</p>
                   </div>
                 </div>
 

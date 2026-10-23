@@ -231,7 +231,7 @@ export async function DELETE(
 
     // Protection rules:
     // 1. Cannot kick a platform admin
-    if (targetUser.role === "PLATFORM_ADMIN" || targetUser.email === "admin@csc.com" || isPlatformAdminEmail(targetUser.email)) {
+    if (targetUser.role === "PLATFORM_ADMIN" || targetUser.email === "admin@diurobotics.com" || targetUser.email === "admin@csc.com" || isPlatformAdminEmail(targetUser.email)) {
       return forbiddenResponse("Platform Admins cannot be kicked");
     }
 
@@ -294,7 +294,7 @@ export async function DELETE(
           where: { id },
           data: {
             name: "Kicked Member",
-            email: `kicked-${id.substring(0, 8)}@csc-kicked.com`, // scrambled email prevents login
+            email: `kicked-${id.substring(0, 8)}@diurc-kicked.com`, // scrambled email prevents login
             password: null,
             avatar: null,
             studentId: null,

@@ -447,12 +447,12 @@ export async function PATCH(
       });
 
       for (const cert of certsToUpdate) {
-        // Pattern: CSC-[YEAR]-[OLD_CATEGORY]-[SUFFIX]
-        const match = cert.certificateCode.match(/^CSC-(\d{4})-[A-Za-z0-9_]+-([A-Za-z0-9]+)$/);
+        // Pattern: DIURC-[YEAR]-[OLD_CATEGORY]-[SUFFIX] or legacy CSC-[YEAR]-...
+        const match = cert.certificateCode.match(/^(?:DIURC|CSC)-(\d{4})-[A-Za-z0-9_]+-([A-Za-z0-9]+)$/);
         if (match) {
           const year = match[1];
           const suffix = match[2];
-          const newCode = `CSC-${year}-${targetCategory}-${suffix}`;
+          const newCode = `DIURC-${year}-${targetCategory}-${suffix}`;
           if (newCode !== cert.certificateCode) {
             await prisma.certificate.update({
               where: { id: cert.id },

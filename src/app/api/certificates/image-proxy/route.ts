@@ -106,7 +106,7 @@ export async function GET(request: NextRequest) {
     const res = await fetch(parsedUrl.toString(), {
       signal: controller.signal,
       headers: {
-        'User-Agent': 'CyberSecClub-ImageProxy/1.0',
+        'User-Agent': 'DIURC-ImageProxy/1.0',
         Accept: 'image/*',
       },
     });

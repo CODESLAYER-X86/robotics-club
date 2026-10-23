@@ -48,6 +48,7 @@ const DEPARTMENT_COLORS: Record<string, string> = {
   'IT': 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
   'Electrical Engineering': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
   'Software Engineering': 'bg-sky-500/10 text-sky-400 border-sky-500/20',
+  'Robotics & Automation': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
   'Cybersecurity': 'bg-rose-500/10 text-rose-400 border-rose-500/20',
   'Other': 'bg-gray-500/10 text-gray-400 border-gray-500/20',
 };

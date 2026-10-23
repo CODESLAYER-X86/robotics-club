@@ -103,7 +103,7 @@ export function EventDetailPage() {
     if (!eventId && typeof window !== 'undefined') {
       try {
         const urlParams = new URLSearchParams(window.location.search);
-        eventId = urlParams.get('id') || urlParams.get('eventId') || urlParams.get('event') || localStorage.getItem('csc_selected_event_id');
+        eventId = urlParams.get('id') || urlParams.get('eventId') || urlParams.get('event') || localStorage.getItem('diurc_selected_event_id') || localStorage.getItem('csc_selected_event_id');
         if (eventId) {
           setSelectedEventId(eventId);
         }

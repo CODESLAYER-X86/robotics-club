@@ -93,8 +93,8 @@ export async function exportEventAttendeesPdf({ event }: ExportPdfOptions): Prom
     doc.setFillColor(15, 23, 42); // slate-900
     doc.rect(0, 0, pageWidth, 29, "F");
 
-    // Decorative emerald accent line
-    doc.setFillColor(16, 185, 129); // emerald-500
+    // Decorative Royal Blue accent line
+    doc.setFillColor(29, 78, 216); // blue-700
     doc.rect(0, 29, pageWidth, 1.5, "F");
 
     // Club Brand Title (Left)

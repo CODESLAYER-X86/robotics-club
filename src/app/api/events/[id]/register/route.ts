@@ -55,7 +55,7 @@ export async function POST(
     }
 
     const registrationStatus = event.fee > 0 ? "PENDING" : "APPROVED";
-    const certificateCode = `CSC-2026-${event.category || "EVENT"}-${uuidv4().split("-")[0].toUpperCase()}`;
+    const certificateCode = `DIURC-2026-${event.category || "EVENT"}-${uuidv4().split("-")[0].toUpperCase()}`;
     const VALID_METHODS = ["BKASH", "NAGAD", "BANK", "CASH"];
     const validatedMethod = VALID_METHODS.includes(paymentMethod) ? paymentMethod : "BKASH";
 

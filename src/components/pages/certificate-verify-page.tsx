@@ -93,14 +93,14 @@ export function CertificateVerifyPage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
-          <Shield className="h-6 w-6 text-emerald-400" />
+          <Shield className="h-6 w-6 text-blue-400" />
           Verify Certificate
         </h1>
         <p className="text-sm text-gray-500 mt-1">Validate a certificate by entering its unique code</p>
       </div>
 
       {/* Search Card with Gradient Border */}
-      <div className="relative rounded-xl p-[1px] bg-gradient-to-r from-emerald-500/30 via-cyan-500/30 to-emerald-500/30">
+      <div className="relative rounded-xl p-[1px] bg-gradient-to-r from-blue-500/30 via-cyan-500/30 to-blue-500/30">
         <Card className="border-0 bg-[#0d0d0d]/95 backdrop-blur-xl">
           <CardContent className="pt-6">
             <div className="flex flex-col sm:flex-row gap-3">
@@ -109,15 +109,15 @@ export function CertificateVerifyPage() {
                 <Input
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
-                  placeholder="Enter certificate code (e.g., CSC-2025-00001)"
-                  className="border-white/10 bg-white/5 pl-10 text-white font-mono focus:border-emerald-500/50 focus:ring-emerald-500/20"
+                  placeholder="Enter certificate code (e.g., DIURC-2026-00001)"
+                  className="border-white/10 bg-white/5 pl-10 text-white font-mono focus:border-blue-500/50 focus:ring-blue-500/20"
                   onKeyDown={(e) => e.key === 'Enter' && handleVerify()}
                 />
               </div>
               <Button
                 onClick={handleVerify}
                 disabled={loading || !code.trim()}
-                className="bg-emerald-600 text-white hover:bg-emerald-500 shadow-lg shadow-emerald-500/20"
+                className="bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/20"
               >
                 {loading ? (
                   <motion.div

@@ -68,7 +68,7 @@ export async function POST(
     });
 
     if (!certificate) {
-      const certificateCode = `CSC-2026-${event.category || "EVENT"}-${uuidv4().split("-")[0].toUpperCase()}`;
+      const certificateCode = `DIURC-2026-${event.category || "EVENT"}-${uuidv4().split("-")[0].toUpperCase()}`;
       certificate = await prisma.certificate.create({
         data: {
           certificateCode,
