@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Facebook, Mail, Heart } from 'lucide-react';
+import { Github, Facebook, Mail, Linkedin, Youtube, Heart } from 'lucide-react';
 import { useAppStore } from '@/store/use-app-store';
 import type { AppView } from '@/types';
 
@@ -17,9 +17,11 @@ const quickLinks: { label: string; view: AppView }[] = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/diuroboticsclub' },
-  { icon: Mail, label: 'Email', href: 'mailto:robotics@diu.ac.bd' },
-  { icon: Github, label: 'GitHub', href: 'https://github.com' },
+  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/share/1DNwdh33wZ/' },
+  { icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@diuroboticsclub?si=KV8eiZk4RA0HyVOR' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/diu-robotics-club/' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/diuroboticsofficial' },
+  { icon: Mail, label: 'Email', href: 'mailto:diuroboticsofficial@gmail.com' },
 ];
 
 const containerVariants = {
@@ -72,6 +74,8 @@ export function Footer() {
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  target={social.href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                   aria-label={social.label}
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}

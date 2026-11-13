@@ -25,6 +25,11 @@ import {
   Flame,
   Plane,
   ArrowRight,
+  Mail,
+  Facebook,
+  Youtube,
+  Linkedin,
+  Github,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -582,25 +587,50 @@ export function AboutPage() {
           <p className="text-xs text-gray-400 font-sans max-w-lg mx-auto leading-relaxed">
             Department of Computer Science & Engineering • Satarkul Campus, Badda, Dhaka-1212, Bangladesh.
           </p>
-          <div className="pt-3 flex flex-wrap items-center justify-center gap-6 font-mono text-xs text-blue-400">
-            <div>
-              <span className="text-gray-500">EMAIL: </span>
-              <a href="mailto:robotics@diu.ac.bd" className="underline hover:text-blue-300 transition-colors">
-                robotics@diu.ac.bd
-              </a>
-            </div>
-            <span className="text-gray-700 hidden sm:inline">•</span>
-            <div>
-              <span className="text-gray-500">FACEBOOK: </span>
-              <a
-                href="https://www.facebook.com/diuroboticsclub"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-blue-300 transition-colors"
-              >
-                fb.com/diuroboticsclub
-              </a>
-            </div>
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="mailto:diuroboticsofficial@gmail.com"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-white/10 bg-white/5 text-xs font-mono text-gray-300 hover:text-blue-400 hover:border-blue-500/30 hover:bg-blue-500/10 transition-all"
+            >
+              <Mail className="w-3.5 h-3.5 text-blue-400" />
+              diuroboticsofficial@gmail.com
+            </a>
+            <a
+              href="https://www.facebook.com/share/1DNwdh33wZ/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-white/10 bg-white/5 text-xs font-mono text-gray-300 hover:text-blue-400 hover:border-blue-500/30 hover:bg-blue-500/10 transition-all"
+            >
+              <Facebook className="w-3.5 h-3.5 text-blue-400" />
+              Facebook
+            </a>
+            <a
+              href="https://youtube.com/@diuroboticsclub?si=KV8eiZk4RA0HyVOR"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-white/10 bg-white/5 text-xs font-mono text-gray-300 hover:text-red-400 hover:border-red-500/30 hover:bg-red-500/10 transition-all"
+            >
+              <Youtube className="w-3.5 h-3.5 text-red-400" />
+              YouTube
+            </a>
+            <a
+              href="https://www.linkedin.com/company/diu-robotics-club/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-white/10 bg-white/5 text-xs font-mono text-gray-300 hover:text-blue-400 hover:border-blue-500/30 hover:bg-blue-500/10 transition-all"
+            >
+              <Linkedin className="w-3.5 h-3.5 text-blue-400" />
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/diuroboticsofficial"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-white/10 bg-white/5 text-xs font-mono text-gray-300 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all"
+            >
+              <Github className="w-3.5 h-3.5 text-gray-300" />
+              GitHub
+            </a>
           </div>
         </div>
       </section>

@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-white font-medium">DIU Robotics Club Operations</p>
             <p className="text-slate-400">Department of Computer Science &amp; Engineering</p>
             <p className="text-slate-400">Dhaka International University, Satarkul, Badda, Dhaka-1212</p>
-            <p className="text-blue-400 font-mono">Email: robotics@diu-bd.net</p>
+            <p className="text-blue-400 font-mono">Email: diuroboticsofficial@gmail.com</p>
           </div>
         </section>
       </div>

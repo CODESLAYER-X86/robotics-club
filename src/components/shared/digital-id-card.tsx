@@ -320,7 +320,7 @@ export function DigitalIdCard({ user }: DigitalIdCardProps) {
 
             <div className="flex items-center justify-between border-t border-white/10 pt-2 text-[10px] text-gray-400">
               <div>
-                <span>DISPATCH: robotics@diu.ac.bd</span>
+                <span>DISPATCH: diuroboticsofficial@gmail.com</span>
               </div>
               <span className="text-blue-400 font-semibold">AUTHENTICATED BADGE</span>
             </div>
